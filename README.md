@@ -1,12 +1,12 @@
 # Business Agency Website
 
-Welcome to Business Agency Website! This is a web application for a business agency that provides consulting services. The project is built using JavaScript, HTML, and CSS. The website is designed to showcase the agency's expertise and services, and to attract potential clients.
+Welcome to Business Agency Website! This is a web application for a business agency that provides consulting services. 
 
-## Built With
+The project is built using JavaScript, HTML, and CSS. The website is designed to showcase the agency's expertise and services, and to attract potential clients.
 
-* Vanilla JavaScript
-* HTML
-* CSS
+## Quick setup and start
+
+In order to run webpage you need HTTP sever which serve the site, for example [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer).
 
 ## Features
 
@@ -15,6 +15,8 @@ Welcome to Business Agency Website! This is a web application for a business age
 3. Services with detailed descriptions of the agency's services
 4. Contact with a contact form and contact information.
 
-## Quick setup and start
+## Built With
 
-In order to run webpage you need HTTP sever which serve the site, for example [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer).
+* `HTML`,
+* `CSS`,
+* `JavaScript`.
