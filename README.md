@@ -18,5 +18,5 @@ In order to run webpage you need HTTP sever which serve the site, for example [L
 ## Built With
 
 -   `HTML`,
--   `SASS`,
+-   `SCSS`,
 -   `JavaScript`.

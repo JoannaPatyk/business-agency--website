@@ -11,8 +11,7 @@ $left: 10%;
 $animationDuration: 12s;
 $animationDelay: 2s;
 
-$backgroundImageSection1: url(/img/black_sand.jpg);
-$backgroundImageSection3: url(img/black-1839731_1920.jpg);
+$backgroundImageSection: url(/img/black_sand.jpg);
 
 * {
     margin: 0;
@@ -193,7 +192,7 @@ html {
 .section-1 {
     width: 100%;
     height: $height;
-    background-image: $backgroundImageSection1;
+    background-image: $backgroundImageSection;
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -260,17 +259,17 @@ html {
 
 .banner-btn {
     position: relative;
-    width: 10 * var.$lineHeight + rem;
-    height: 3 * var.$lineHeight + rem;
+    width: 15 * var.$lineHeight + rem;
+    height: 6 * var.$lineHeight + rem;
     color: var.$colorLightRed;
-    font-size: 2 * var.$fontSize;
+    font-size: 4 * var.$fontSize;
     font-weight: 300;
     letter-spacing: 0.1 * var.$letterSpacing;
     text-transform: uppercase;
-    border-radius: 3 * var.$borderRadius;
+    border-radius: 8 * var.$borderRadius;
     border: 0.1 * var.$borderWidth solid var.$colorDarkRed;
     background: linear-gradient(to right, var.$colorMediumRed, var.$colorDarkRed);
-    box-shadow: 1rem 2rem 3rem var.$boxShadowColor-2;
+    box-shadow: 2rem 2rem 5rem var.$boxShadowColor-4;
     text-shadow: 0.6rem 0.3rem 0.8rem var.$boxShadowColor-1;
     cursor: pointer;
     visibility: hidden;
@@ -466,8 +465,9 @@ html {
     display: flex;
     align-items: center;
     padding-left: 10 * $padding;
-    background-image: $backgroundImageSection3;
-    background: no-repeat cover;
+    background-image: $backgroundImageSection;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .pricing-cards-wrapper {
@@ -601,17 +601,17 @@ html {
     background-color: var.$red;
 }
 
-/* Section 4 */
+/* SECTION 4 */
 
 .section-4 {
     width: 100%;
     height: 100vh;
-    background-color: rgb(19, 16, 16);
-    box-shadow: 0 0 3rem 3rem rgba(0, 0, 0, 0.7);
     display: flex;
     align-items: center;
-    padding-left: 10rem;
-    padding-bottom: 2rem;
+    padding-left: 10 * $padding;
+    padding-bottom: 2 * $padding;
+    background-color: var.$black;
+    box-shadow: 0 0 3rem 3rem var.$boxShadowColor-3;
 }
 
 .contact-wrapper {
@@ -623,50 +623,50 @@ html {
 
 .contact-details {
     display: flex;
-    margin-bottom: 4rem;
+    margin-bottom: 2 * $margin;
 }
 
 .contact-details div {
     width: 18rem;
     text-align: center;
-    margin: 4rem;
+    margin: 2 * $margin;
 }
 
 .contact-details i,
 .contact-wrapper i {
-    font-size: 5rem;
-    color: #c91a1a;
+    font-size: 5 * var.$fontSize;
+    color: var.$colorMediumRed;
 }
 
 .contact-details h3 {
-    font-size: 2.5rem;
+    font-size: 2.5 * var.$fontSize;
     font-weight: 600;
     text-transform: uppercase;
-    color: #f5f5f5;
-    margin: 2rem 0;
+    color: var.$colorLightRed;
+    margin: $margin 0;
 }
 
 .contact-details p {
-    font-size: 1.6rem;
+    font-size: 1.6 * var.$fontSize;
     font-weight: 300;
-    color: #f5f5f5;
+    color: var.$colorLightRed;
 }
 
 .contact-logo {
-    height: 5rem;
+    height: 2.5 * var.$lineHeight + rem;
     display: flex;
-    line-height: 4rem;
-    margin-bottom: 1rem;
+    line-height: 2 * var.$lineHeight + rem;
+    margin-bottom: 0.5 * $margin;
 }
 .contact-wrapper h1 {
-    font-size: 4rem;
+    font-size: 4 * var.$fontSize;
     font-weight: 600;
-    color: #f5f5f5;
-    margin-bottom: 3rem;
+    color: var.$colorLightRed;
+    margin-bottom: 1.5 * $margin;
     text-transform: uppercase;
-    letter-spacing: 0.5rem;
-    padding-left: 1rem;
-    padding-right: 0.5rem;
+    letter-spacing: 2.5 * var.$letterSpacing;
+    padding-left: $padding;
+    padding-right: 0.5 * $padding;
 }
 
 .contact-form {
@@ -677,15 +677,15 @@ html {
 
 .contact-form input,
 .contact-form textarea {
-    padding: 1.2rem;
-    background-color: rgba(0, 0, 0, 0.8);
-    color: #f5f5f5;
-    margin-bottom: 1rem;
+    padding: 1.2 * $padding;
+    background-color: var.$boxShadowColor-4;
+    color: var.$colorLightRed;
+    margin-bottom: 0.5 $margin;
     font-weight: 200;
-    font-size: 1.8rem;
-    letter-spacing: 0.1rem;
+    font-size: 1.8 * var.$fontSize;
+    letter-spacing: 0.05 * var.$letterSpacing;
     border: none;
-    border-radius: 1rem;
+    border-radius: var.$borderRadius;
 }
 
 .contact-form textarea {
@@ -697,15 +697,15 @@ html {
 .contact-form .send-message {
     text-transform: uppercase;
     font-weight: 400;
-    font-size: 2rem;
-    color: #f5f5f5;
-    background-color: #c91a1a;
-    transition: 0.5s;
+    font-size: 2 * var.$fontSize;
+    color: var.$colorLightRed;
+    background-color: var.$colorMediumRed;
+    transition: 2.5 * var.$transition;
     cursor: pointer;
 }
 
 .contact-form .send-message:hover {
-    background-color: #800505;
+    background-color: var.$colorDarkRed;
     transform: scale(0.98);
 }
 
@@ -713,34 +713,34 @@ html {
 
 .footer {
     width: 100%;
-    height: 10rem;
-    background-color: rgba(1, 1, 1, 0.904);
-    box-shadow: 0 0 2rem 1rem rgba(0, 0, 0, 0.9);
+    height: 5 * var.$lineHeight;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 10rem;
+    background-color: rgba(1, 1, 1, 0.904);
+    box-shadow: 0 0 2rem 1rem var.$boxShadowColor-5;
+    padding: 0 10 * $padding;
 }
 
 .footer-nav a {
-    font-size: 2rem;
+    font-size: 2 * var.$fontSize;
     font-weight: 500;
-    color: #f5f5f5;
-    text-shadow: 0 0 0.5rem #800505;
-    margin-right: 3rem;
-    letter-spacing: 0.1rem;
+    color: var.$colorLightRed;
+    text-shadow: 0 0 0.5rem var.$colorDarkRed;
+    margin-right: 1.5 * $margin;
+    letter-spacing: 0.1 * var.$letterSpacing;
     text-transform: uppercase;
-    transition: 0.5s;
+    transition: 2.5 * var.$transition;
 }
 
 .footer-nav a:hover {
-    color: #c91a1a;
+    color: var.$colorMediumRed;
 }
 .copyright {
-    font-size: 1.5rem;
-    color: #f5f5f5;
+    font-size: 1.5 * var.$fontSize;
+    color: var.$colorLightRed;
     font-weight: 100;
-    letter-spacing: 0.2rem;
+    letter-spacing: 0.1 * var.$letterSpacing;
     text-align: center;
 }
 
@@ -760,7 +760,7 @@ html {
     }
 
     .section-3 .section-heading-line {
-        margin-right: 3rem;
+        margin-right: 1.5 * $margin;
     }
 }
 
@@ -770,7 +770,7 @@ html {
     }
 
     .logo-name {
-        left: 7%;
+        left: 0.7 * $left;
     }
 
     .video-wrapper {
@@ -789,7 +789,7 @@ html {
 
 @media (max-width: 1500px) {
     .logo-name {
-        left: 10%;
+        left: $left;
     }
 
     .section-heading-line {
@@ -840,11 +840,11 @@ html {
 
     .section-3 {
         height: auto;
-        padding: 5rem 0 10rem 0;
+        padding: 5 * $padding 0 10 * $padding;
     }
 
     .section-3 .section-heading {
-        margin-bottom: 7rem;
+        margin-bottom: 3.5 * $margin;
     }
 
     .swiper-container {
@@ -853,7 +853,7 @@ html {
 
     .section-4 {
         height: auto;
-        padding: 5rem 0;
+        padding: 5 * $padding 0;
     }
 }
 
@@ -865,13 +865,13 @@ html {
     .navbar {
         padding: 0;
         width: 100%;
-        height: 10rem;
+        height: 5 * var.$lineHeight;
     }
 
     .logo-name {
-        top: 30%;
-        left: 10%;
-        margin: 2rem;
+        top: 3 * $top;
+        left: $left;
+        margin: $margin;
         font-size: 4rem;
     }
 
@@ -880,27 +880,27 @@ html {
     }
 
     .banner {
-        top: 30%;
+        top: 3 * $top;
     }
 
     .banner-heading {
-        height: 15rem;
+        height: 7.5 * var.$lineHeight;
     }
 
     .banner-heading span {
-        font-size: 8rem;
+        font-size: 0.8 * var.$fontSize;
     }
 
     .banner-paragraph {
         width: 45rem;
-        font-size: 4rem;
+        font-size: 0.4 * var.$fontSize;
     }
 
     .banner-btn {
         position: relative;
         width: 30rem;
-        height: 10rem;
-        font-size: 3rem;
+        height: 5 * var.$lineHeight;
+        font-size: 0.3 * var.$fontSize;
     }
 
     .section-2,
@@ -936,11 +936,11 @@ html {
 
     .section-1,
     .section-2 {
-        height: 80vh;
+        height: 0.8 * $height;
     }
 
     .section-3 {
-        height: 70vh;
+        height: 0.7 * $height;
     }
 
     .video-wrapper {
@@ -958,7 +958,7 @@ html {
     }
 
     .footer-nav {
-        margin-bottom: 2rem;
+        margin-bottom: $margin;
     }
 }
 
@@ -969,7 +969,7 @@ html {
 
     .banner-heading span {
         top: 20%;
-        font-size: 5rem;
+        font-size: 0.5 * var.$fontSize;
     }
 
     .video-wrapper {
@@ -986,7 +986,7 @@ html {
 
     .contact-details div {
         width: 18rem;
-        margin: 3rem 1rem;
+        margin: 1.5 * $padding $padding;
     }
 
     .contact-form {
