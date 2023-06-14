@@ -269,7 +269,7 @@ html {
     text-transform: uppercase;
     border-radius: 3 * var.$borderRadius;
     border: 0.1 * var.$borderWidth solid var.$colorDarkRed;
-    background: linear-gradient(to right, var.$blue, var.$colorDarkRed);
+    background: linear-gradient(to right, var.$colorMediumRed, var.$colorDarkRed);
     box-shadow: 1rem 2rem 3rem var.$boxShadowColor-2;
     text-shadow: 0.6rem 0.3rem 0.8rem var.$boxShadowColor-1;
     cursor: pointer;
