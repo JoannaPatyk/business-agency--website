@@ -1,51 +1,67 @@
+@use './variables.scss' as var;
+
+$padding: 1rem;
+$margin: 2rem;
+$width: 100vw;
+$height: 100vh;
+
+$top: 10%;
+$left: 10%;
+
+$animationDuration: 12s;
+$animationDelay: 2s;
+
+$backgroundImageSection1: url(/img/black_sand.jpg);
+$backgroundImageSection3: url(img/black-1839731_1920.jpg);
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Oswald', sans-serif;
+    font-family: var.$fontFamily;
     font-weight: 400;
     outline: none;
     text-decoration: none;
 }
 
 html {
-    font-size: 10px;
+    font-size: var.$fontSize;
     scroll-behavior: smooth;
 }
 
 .section-heading {
-    font-size: 10rem;
     font-weight: 100;
-    color: #f5f5f5;
-    margin-right: 3rem;
+    font-size: var.$fontSize;
+    color: var.$colorLightRed;
+    margin-right: 1.5 * $margin;
 }
 
 .section-heading-line {
-    width: 15rem;
-    height: 0.2rem;
     z-index: 100;
-    background-color: #f5f5f5;
+    width: 7.5 * var.$lineHeight + rem;
+    height: 0.1 * var.$lineHeight + rem;
+    background-color: var.$colorLightRed;
 }
 
-/* Navbar */
+/* NAVBAR */
 
 .navbar {
     position: fixed;
-    top: -8rem;
+    top: -8 * $top;
     left: 0;
     z-index: 10;
-    width: 100%;
-    height: 8rem;
-    padding: 1rem;
-    background-color: rgba(0, 0, 0, 0.8);
-    box-shadow: 0 0 2rem 1rem rgba(0, 0, 0, 0.9);
+    width: $width;
+    height: 4 * var.$lineHeight + rem;
+    padding: $padding;
+    background-color: var.$black;
+    box-shadow: 0 0 2rem 1rem var.$boxShadowColor-5;
     transition: height 0.5s;
-    animation: animateNavbar 1s 0.5s forwards;
+    animation: animateNavbar 0.08 * $animationDuration 0.25 * $animationDelay forwards;
 }
 
 .navbar.change {
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.9);
+    height: $height;
+    background-color: var.$black;
     box-shadow: none;
 }
 
@@ -56,41 +72,41 @@ html {
 .logo-name {
     position: absolute;
     top: 0;
-    left: 6.5%;
-    margin: 0.5rem;
-    font-size: 2.5rem;
+    left: 0.65 * $left;
     font-weight: 600;
+    margin: 0.25 * $margin;
+    font-size: 2.5 * var.$fontSize;
     text-transform: uppercase;
-    color: #f5f5f5;
+    color: var.$colorLightRed;
 }
 
 .logo-name span {
-    font-size: 4rem;
+    font-size: 4 * var.$fontSize;
     font-weight: 700;
-    color: #c91a1a;
+    color: var.$colorMediumRed;
 }
 
 .logo-img img {
-    height: 8vh;
     position: absolute;
-    top: 50%;
-    left: 2%;
+    top: 5 * $top;
+    left: 0.2 * $left;
+    height: 4 * var.$lineHeight + rem;
 }
 
 .nav-list {
-    position: absolute;
-    top: 15%;
-    left: 50%;
-    transform: translateX(-50%);
+    opacity: 0;
+    visibility: hidden;
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.2s;
+    position: absolute;
+    top: 1.5 * $top;
+    left: 5 * $left;
+    transform: translateX(-50%);
+    background-color: var.$black;
+    transition: var.$transition;
 }
 
 .change .nav-list {
@@ -100,48 +116,48 @@ html {
 }
 
 .nav-link {
-    font-size: 4.5rem;
+    margin: 1.25 * $margin 0;
+    font-size: 4.5 * var.$fontSize;
     font-weight: 700;
-    letter-spacing: 0.3rem;
-    color: #f5f5f5;
-    text-shadow: 0 0 0.5rem #800505;
+    letter-spacing: 0.3 * var.$letterSpacing;
+    color: var.$colorLightRed;
+    text-shadow: 0 0 0.5rem var.$colorDarkRed;
     text-transform: uppercase;
-    margin: 2.5rem 0;
-    transition: color 0.4s;
+    transition: var.$transition;
 }
 
 .nav-link:hover {
-    color: #c91a1a;
+    color: var.$colorMediumRed;
 }
 
 .logo-img-2 {
     position: absolute;
-    bottom: 80%;
-    right: -20%;
+    bottom: 8 * $top;
+    right: -2 * $left;
     z-index: -10;
-    height: 40%;
+    height: 4 * $top;
     opacity: 0.3;
 }
 
 .menu {
     width: 4rem;
     height: 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
     position: fixed;
     top: 2.5rem;
     right: 4rem;
     z-index: 100;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
     cursor: pointer;
 }
 
 .line {
     width: 100%;
-    height: 0.3rem;
     border-radius: 50%;
-    background-color: #f5f5f5;
-    transition: transform 0.5s;
+    height: 0.15 * var.$lineHeight + rem;
+    background-color: var.$colorLightRed;
+    transition: 2.5 * var.$transition;
 }
 
 .line-1 {
@@ -172,12 +188,12 @@ html {
     }
 }
 
-/* Section 1 */
+/* SECTION 1 */
 
 .section-1 {
     width: 100%;
-    height: 100vh;
-    background-image: url(img/black-1839731_1920.jpg);
+    height: $height;
+    background-image: $backgroundImageSection1;
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -185,16 +201,16 @@ html {
 .banner {
     width: 100%;
     position: absolute;
-    top: 25%;
-    left: 50%;
+    top: 2.5 * $top;
+    left: 5 * $left;
     transform: translateX(-50%);
     text-align: center;
 }
 
 .banner-heading {
-    margin-bottom: 3rem;
-    height: 20rem;
-    perspective: 50rem;
+    margin-bottom: 1.75 * $margin;
+    height: 10 * var.$lineHeight + rem;
+    perspective: 25 * var.$lineHeight + rem;
     overflow: hidden;
 }
 
@@ -204,108 +220,106 @@ html {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 11rem;
-    letter-spacing: 3rem;
+    font-size: 11 * var.$fontSize;
+    letter-spacing: 3 * var.$letterSpacing;
     font-weight: 400;
     text-transform: uppercase;
-    color: #f5f5f5;
-    text-shadow: 0.1rem 0.1rem 0.5rem silver;
+    color: var.$colorLightRed;
+    text-shadow: 0.1rem 0.1rem 0.5rem var.$silver;
     transform: translateZ(8rem);
     opacity: 0;
 }
 
 .heading-1 {
-    animation: animationHeading 12s 3s infinite;
+    animation: animationHeading $animationDuration 1.5 * $animationDelay infinite;
 }
 
 .heading-2 {
-    animation: animationHeading 12s 6s infinite;
+    animation: animationHeading $animationDuration 3 * $animationDelay infinite;
 }
 
 .heading-3 {
-    animation: animationHeading 12s 9s infinite;
+    animation: animationHeading $animationDuration 4.5 * $animationDelay infinite;
 }
 
 .heading-4 {
-    animation: animationHeading 12s 12s infinite;
+    animation: animationHeading $animationDuration 6 * $animationDelay infinite;
 }
 
 .banner-paragraph {
     width: 80%;
-    margin: 0 auto 6rem auto;
-    padding: 1rem;
-    font-size: 3rem;
+    margin: 0 auto 3 * $margin;
+    padding: $padding;
     font-weight: 200;
-    /* text-transform: uppercase; */
-    color: #f5f5f5;
-    /* box-shadow: 0 0 6rem rgba(0,0,0,.9); */
-    opacity: 0;
+    font-size: 3 * var.$fontSize;
+    color: var.$colorLightRed;
     visibility: hidden;
-    animation: fadeAnimation 1s 1.5s forwards;
+    opacity: 0;
+    animation: fadeAnimation 0.08 * $animationDuration 0.75 * $animationDelay forwards;
 }
 
 .banner-btn {
     position: relative;
-    width: 20rem;
-    height: 6rem;
-    color: #f5f5f5;
-    font-size: 2rem;
+    width: 10 * var.$lineHeight + rem;
+    height: 3 * var.$lineHeight + rem;
+    color: var.$colorLightRed;
+    font-size: 2 * var.$fontSize;
     font-weight: 300;
-    letter-spacing: 0.1rem;
+    letter-spacing: 0.1 * var.$letterSpacing;
     text-transform: uppercase;
-    border-radius: 3rem;
-    border: 0.1rem solid #800505;
-    background: linear-gradient(to right, #c91a1a, #740f0f);
-    box-shadow: 1rem 2rem 3rem rgba(0, 0, 0, 0.5);
-    text-shadow: 0.6rem 0.3rem 0.8rem rgba(0, 0, 0, 0.3);
+    border-radius: 3 * var.$borderRadius;
+    border: 0.1 * var.$borderWidth solid var.$colorDarkRed;
+    background: linear-gradient(to right, var.$blue, var.$colorDarkRed);
+    box-shadow: 1rem 2rem 3rem var.$boxShadowColor-2;
+    text-shadow: 0.6rem 0.3rem 0.8rem var.$boxShadowColor-1;
     cursor: pointer;
-    opacity: 0;
     visibility: hidden;
-    animation: fadeAnimation 1s 2s forwards;
     overflow: hidden;
+    opacity: 0;
+    animation: fadeAnimation 0.08 * $animationDuration $animationDelay forwards;
 }
 
 .banner-btn::before {
     content: '';
     position: absolute;
     top: 0;
-    left: -100%;
+    left: -10 * $left;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to right, transparent, #f5f5f5, transparent);
+    background: var.$linear-gradient-1;
     transform: skewX(-30deg);
-    transition: left 0.5s;
+    transition: 2.5 * var.$transition;
 }
 
 .banner-btn:hover::before {
-    left: 100%;
+    left: 10 * $left;
 }
 
 @keyframes animationHeading {
     0% {
         transform: translateZ(8rem);
+        letter-spacing: 3 * var.$letterSpacing;
         opacity: 0;
-        letter-spacing: 3rem;
     }
     3% {
         transform: translateZ(0);
+        letter-spacing: 1.5 * var.$letterSpacing;
         opacity: 1;
-        letter-spacing: 1.5rem;
     }
     25% {
         transform: translateZ(0);
+        letter-spacing: 1.5 * var.$letterSpacing;
         opacity: 1;
-        letter-spacing: 1.5rem;
     }
     28% {
         transform: translateZ(8rem);
+        letter-spacing: 3 * var.$letterSpacing;
         opacity: 0;
-        letter-spacing: 3rem;
     }
     100% {
         transform: translateZ(8rem);
+        letter-spacing: 3 * var.$letterSpacing;
         opacity: 0;
-        letter-spacing: 3rem;
     }
 }
 
@@ -320,40 +334,39 @@ html {
     }
 }
 
-/* Section 2 */
+/* SECTION 2 */
 
 .section-2 {
     width: 100%;
-    height: 100vh;
-    background-color: rgb(19, 16, 16);
+    height: $height;
+    position: relative;
     display: flex;
     align-items: center;
-    padding: 0 10rem;
-    /* box-shadow: 0 0 3rem 3rem rgba(223, 69, 69, 0.651); */
-    box-shadow: 0 0 3rem 3rem rgba(0, 0, 0, 0.7);
-    position: relative;
+    padding: 0 10 * $padding;
+    box-shadow: 0 0 3rem 3rem var.$boxShadowColor-2;
+    background-color: var.$black;
 }
 
 .section-2-bg {
     position: absolute;
     top: 0;
-    left: 10%;
+    left: $left;
     z-index: 0;
     transform: rotate(20deg);
     opacity: 0.3;
 }
 
 .section-2-bg img {
-    height: 50vh;
+    height: 0.5 * $height;
 }
 
 .video-wrapper {
     width: 70rem;
     height: 40rem;
     position: absolute;
-    top: 5.5rem;
-    right: 15rem;
-    box-shadow: 3rem 3rem 3rem rgba(0, 0, 0, 0.8);
+    top: $top;
+    right: 1.5 * $left;
+    box-shadow: 3rem 3rem 3rem var.$boxShadowColor-4;
     overflow: hidden;
 }
 
@@ -362,16 +375,16 @@ html {
     height: 100%;
     object-fit: cover;
     opacity: 0.3;
-    transition: opacity 0.3s;
+    transition: 1.5 * var.$transition;
 }
 
 .controls {
     width: 100%;
     position: absolute;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: var.$boxShadowColor-3;
     transform: translateY(calc(100% - 0.4rem));
-    transition: transform 0.4s;
+    transition: 2 * var.$transition;
 }
 
 .video-wrapper:hover .controls {
@@ -379,7 +392,7 @@ html {
 }
 
 .buttons {
-    padding: 1rem 0.5rem 0.5rem 0.5rem;
+    padding: $padding 0.5 * $padding 0.5 * $padding;
 }
 
 .buttons button {
@@ -389,14 +402,14 @@ html {
 }
 
 .buttons i {
-    font-size: 2.5rem;
-    color: #f5f5f5;
+    font-size: 2.5 * var.$fontSize;
+    color: var.$colorLightRed;
 }
 
 .video-bar-wrapper {
     width: 100%;
-    height: 0.5rem;
-    background-color: #000;
+    height: 0.25 * var.$lineHeight + rem;
+    background-color: var.$black;
     position: absolute;
     top: 0;
     left: 0;
@@ -405,71 +418,70 @@ html {
 .video-bar {
     width: 0;
     height: 100%;
-    background-color: #c91a1a;
-    transition: width 0.2s linear;
+    background-color: var.$colorMediumRed;
+    transition: var.$transition linear;
 }
 
 .fa-quote-left {
     position: absolute;
     top: 0.3rem;
     left: 0;
-    font-size: 4rem;
+    font-size: 4 * var.$fontSize;
     opacity: 0.1;
 }
 
 .section-2-paragraph {
     width: 95rem;
-    position: absolute;
-    bottom: 7rem;
-    right: 15rem;
-    font-size: 1.8rem;
-    font-weight: 100;
-    letter-spacing: 0.2rem;
-    color: #f5f5f5;
-    border-top: 0.4rem double #f5f5f5;
-    border-bottom: 0.4rem double #f5f5f5;
-    padding: 2rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: justify;
-    text-shadow: 1rem 1rem 2rem rgba(0, 0, 0, 0.7);
+    padding: 2 * $padding;
+    position: absolute;
+    bottom: 7rem;
+    right: 15rem;
+    font-size: 1.8 * var.$fontSize;
+    font-weight: 100;
+    letter-spacing: 0.2 * var.$letterSpacing;
+    color: var.$colorLightRed;
+    border-top: 0.4 * var.$borderWidth double var.$colorLightRed;
+    border-bottom: 0.4 * var.$borderWidth double var.$colorLightRed;
+    text-shadow: 1rem 1rem 2rem var.$boxShadowColor-3;
 }
 
 .fa-quote-right {
     position: absolute;
     bottom: 0.3rem;
     right: 0.8rem;
-    font-size: 4rem;
+    font-size: 4 * var.$fontSize;
     opacity: 0.1;
 }
 
-/* Section 3 */
+/* SECTION 3 */
 
 .section-3 {
     width: 100%;
-    height: 100vh;
-    background-image: url(img/black-1839731_1920.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
+    height: $height;
     display: flex;
     align-items: center;
-    padding-left: 10rem;
+    padding-left: 10 * $padding;
+    background-image: $backgroundImageSection3;
+    background: no-repeat cover;
 }
 
 .pricing-cards-wrapper {
     width: 100%;
     display: flex;
     justify-content: space-evenly;
-    padding: 5rem;
+    padding: 5 * $padding;
 }
 
 .pricing-card {
     width: 25rem !important;
     height: 45rem !important;
-    background-color: rgb(19, 16, 16);
-    border-radius: 1rem;
+    background-color: var.$black;
+    border-radius: var.$borderRadius;
 }
 
 .pricing-card-front {
@@ -483,110 +495,110 @@ html {
 
 .pricing-card-heading {
     width: 100%;
-    height: 5rem;
-    color: #f5f5f5;
-    font-size: 2rem;
-    font-weight: 300;
-    text-transform: uppercase;
+    height: 2.5 * var.$lineHeight + rem;
     display: flex;
     align-items: center;
-    padding-left: 2rem;
+    padding-left: 2 * $padding;
+    color: var.$colorLightRed;
+    font-size: 2 * var.$fontSize;
+    font-weight: 300;
+    text-transform: uppercase;
 }
 
 .heading-free {
-    background: linear-gradient(to right, #087285, #31c2ee);
-    border-radius: 1rem 1rem 0 0;
+    background: var.$linear-gradient-blue;
+    border-radius: var.$borderRadius var.$borderRadius 0 0;
 }
 
 .heading-basic {
-    background: linear-gradient(to right, #946809, #ece92e);
-    border-radius: 1rem 1rem 0 0;
+    background: var.$linear-gradient-yellow;
+    border-radius: var.$borderRadius var.$borderRadius 0 0;
 }
 
 .heading-standard {
-    background: linear-gradient(to right, #0b7e48, #69f1a6);
-    border-radius: 1rem 1rem 0 0;
+    background: var.$linear-gradient-green;
+    border-radius: var.$borderRadius var.$borderRadius 0 0;
 }
 
 .heading-premium {
-    background: linear-gradient(to right, #a10c14, #db5b5b);
-    border-radius: 1rem 1rem 0 0;
+    background: var.$linear-gradient-red;
+    border-radius: var.$borderRadius var.$borderRadius 0 0;
 }
 
 .pricing-card-price {
-    font-size: 6rem;
+    font-size: 6 * var.$fontSize;
     font-weight: 800;
-    color: #f5f5f5;
-    letter-spacing: 0.3rem;
+    color: var.$colorLightRed;
+    letter-spacing: 0.3 * var.$letterSpacing;
 }
 
 .pricing-card-list li {
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.25 * $margin;
     list-style: none;
 }
 
 .list-free li {
-    color: #087285;
+    color: var.$blue;
 }
 
 .list-basic li {
-    color: #946809;
+    color: var.$brown;
 }
 
 .list-standard li {
-    color: #0b7e48;
+    color: var.$green;
 }
 
 .list-premium li {
-    color: #a10c14;
+    color: var.$red;
 }
 
 .pricing-card-list i {
-    font-size: 1.8rem;
-    width: 3rem;
+    font-size: 1.8 * var.$fontSize;
+    width: 1.5 * var.$lineHeight + rem;
 }
 
 .pricing-card-list span {
-    font-size: 1.8rem;
     font-weight: 300;
-    letter-spacing: 0.1rem;
+    font-size: 1.8 * var.$fontSize;
+    letter-spacing: 0.1 * var.$letterSpacing;
 }
 
 .pricing-card-btn {
-    width: 16rem;
-    height: 4rem;
-    margin-bottom: 2rem;
+    width: 8 * var.$lineHeight + rem;
+    height: 2 * var.$lineHeight + rem;
+    margin-bottom: $margin;
     border: none;
-    border-radius: 3rem;
-    font-size: 1.8rem;
+    border-radius: 3 * var.$borderRadius;
+    font-size: 1.8 * var.$fontSize;
     font-weight: 200;
-    color: #f5f5f5;
-    text-shadow: 0.3rem 0.3rem 0.6rem rgba(0, 0, 0, 0.5);
+    color: var.$colorLightRed;
+    text-shadow: 0.3rem 0.3rem 0.6rem var.$boxShadowColor-2;
     text-transform: uppercase;
-    letter-spacing: 0.1rem;
-    transition: 0.5s;
+    letter-spacing: 0.1 * var.$letterSpacing;
+    transition: 2.5 * var.$transition;
     cursor: pointer;
 }
 
 .pricing-card-btn:hover {
     transform: scale(0.98);
-    box-shadow: 0 0 0.5rem silver;
+    box-shadow: 0 0 0.5rem var.$silver;
 }
 
 .btn-free {
-    background-color: #087285;
+    background-color: var.$blue;
 }
 
 .btn-basic {
-    background-color: #946809;
+    background-color: var.$brown;
 }
 
 .btn-standard {
-    background-color: #0b7e48;
+    background-color: var.$green;
 }
 
 .btn-premium {
-    background-color: #a10c14;
+    background-color: var.$red;
 }
 
 /* Section 4 */
@@ -974,7 +986,7 @@ html {
 
     .contact-details div {
         width: 18rem;
-        margin: 3rem 1 rem;
+        margin: 3rem 1rem;
     }
 
     .contact-form {

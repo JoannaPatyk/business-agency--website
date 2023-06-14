@@ -1,6 +1,6 @@
 # Business Agency Website
 
-Welcome to Business Agency Website! This is a web application for a business agency that provides consulting services. 
+Welcome to Business Agency Website! This is a web application for a business agency that provides consulting services.
 
 The project is built using JavaScript, HTML, and CSS. The website is designed to showcase the agency's expertise and services, and to attract potential clients.
 
@@ -17,6 +17,6 @@ In order to run webpage you need HTTP sever which serve the site, for example [L
 
 ## Built With
 
-* `HTML`,
-* `CSS`,
-* `JavaScript`.
+-   `HTML`,
+-   `CSS`,
+-   `JavaScript`.
