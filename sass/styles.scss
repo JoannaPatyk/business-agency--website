@@ -12,6 +12,7 @@ $animationDuration: 12s;
 $animationDelay: 2s;
 
 $backgroundImageSection: url(/img/black_sand.jpg);
+$backgroundVideo: url(/img/sea.mp4);
 
 * {
     margin: 0;
@@ -30,31 +31,28 @@ html {
 
 .section-heading {
     font-weight: 100;
-    font-size: var.$fontSize;
+    font-size: 8 * var.$fontSize;
+    writing-mode: vertical-rl;
+    transform: rotate(-180deg);
     color: var.$colorLightRed;
-    margin-right: 1.5 * $margin;
-}
-
-.section-heading-line {
-    z-index: 100;
-    width: 7.5 * var.$lineHeight + rem;
-    height: 0.1 * var.$lineHeight + rem;
-    background-color: var.$colorLightRed;
+    border-left: 6px double var.$colorLightRed;
 }
 
 /* NAVBAR */
 
 .navbar {
     position: fixed;
-    top: -8 * $top;
+    top: 0;
     left: 0;
     z-index: 10;
     width: $width;
-    height: 4 * var.$lineHeight + rem;
+    height: 5 * var.$lineHeight + rem;
     padding: $padding;
+    display: grid;
+    grid-template-rows: 3fr 1fr 1fr;
     background-color: var.$black;
     box-shadow: 0 0 2rem 1rem var.$boxShadowColor-5;
-    transition: height 0.5s;
+    transition: 2.5 * var.$transition;
     animation: animateNavbar 0.08 * $animationDuration 0.25 * $animationDelay forwards;
 }
 
@@ -66,44 +64,38 @@ html {
 
 .logo {
     position: relative;
+    display: flex;
+    align-items: center;
 }
 
 .logo-name {
-    position: absolute;
-    top: 0;
-    left: 0.65 * $left;
     font-weight: 600;
-    margin: 0.25 * $margin;
-    font-size: 2.5 * var.$fontSize;
+    font-size: 4 * var.$fontSize;
+    letter-spacing: 0.2 * var.$letterSpacing;
     text-transform: uppercase;
     color: var.$colorLightRed;
 }
 
 .logo-name span {
-    font-size: 4 * var.$fontSize;
-    font-weight: 700;
+    font-size: 7 * var.$fontSize;
+    font-weight: 800;
     color: var.$colorMediumRed;
 }
 
-.logo-img img {
-    position: absolute;
-    top: 5 * $top;
-    left: 0.2 * $left;
-    height: 4 * var.$lineHeight + rem;
+.nav-links {
+    height: $height;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .nav-list {
     opacity: 0;
     visibility: hidden;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    position: relative;
     width: 100%;
     height: 100%;
-    position: absolute;
-    top: 1.5 * $top;
-    left: 5 * $left;
-    transform: translateX(-50%);
     background-color: var.$black;
     transition: var.$transition;
 }
@@ -129,62 +121,40 @@ html {
     color: var.$colorMediumRed;
 }
 
-.logo-img-2 {
-    position: absolute;
-    bottom: 8 * $top;
-    right: -2 * $left;
-    z-index: -10;
-    height: 4 * $top;
-    opacity: 0.3;
+.menu-container {
+    width: 6rem;
+    height: 6rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    justify-content: space-evenly;
+    cursor: pointer;
 }
 
 .menu {
-    width: 4rem;
-    height: 4rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
     position: fixed;
     top: 2.5rem;
     right: 4rem;
     z-index: 100;
-    cursor: pointer;
+    font-size: 5 * var.$fontSize;
+    color: var.$colorMediumRed;
 }
 
-.line {
-    width: 100%;
-    border-radius: 50%;
-    height: 0.15 * var.$lineHeight + rem;
-    background-color: var.$colorLightRed;
-    transition: 2.5 * var.$transition;
+.back-icon {
+    display: none;
 }
 
-.line-1 {
-    width: 50%;
+.list-icon {
+    display: block;
 }
 
-.change .line-1 {
-    transform: translate(100%, 1rem) rotate(-35deg);
-    transform-origin: right;
+.show {
+    display: block;
 }
 
-.line-3 {
-    width: 50%;
-    margin-left: auto;
-}
-
-.change .line-3 {
-    transform: translateY(-1.1rem) rotate(35deg);
-    transform-origin: right;
-}
-
-@keyframes animateNavbar {
-    0% {
-        top: -8rem;
-    }
-    100% {
-        top: 0;
-    }
+.hidden {
+    display: none;
 }
 
 /* SECTION 1 */
@@ -192,9 +162,28 @@ html {
 .section-1 {
     width: 100%;
     height: $height;
-    background-image: $backgroundImageSection;
-    background-repeat: no-repeat;
-    background-size: cover;
+}
+
+.video-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.video-container video {
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    opacity: 0.5;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .banner {
@@ -207,8 +196,8 @@ html {
 }
 
 .banner-heading {
-    margin-bottom: 1.75 * $margin;
-    height: 10 * var.$lineHeight + rem;
+    margin: 1.5 * $margin 0;
+    height: 6 * var.$lineHeight + rem;
     perspective: 25 * var.$lineHeight + rem;
     overflow: hidden;
 }
@@ -219,11 +208,11 @@ html {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 11 * var.$fontSize;
-    letter-spacing: 3 * var.$letterSpacing;
-    font-weight: 400;
+    font-size: 8 * var.$fontSize;
+    letter-spacing: 2 * var.$letterSpacing;
+    font-weight: 800;
     text-transform: uppercase;
-    color: var.$colorLightRed;
+    color: var.$black;
     text-shadow: 0.1rem 0.1rem 0.5rem var.$silver;
     transform: translateZ(8rem);
     opacity: 0;
@@ -246,12 +235,14 @@ html {
 }
 
 .banner-paragraph {
-    width: 80%;
+    width: 50%;
     margin: 0 auto 3 * $margin;
     padding: $padding;
-    font-weight: 200;
-    font-size: 3 * var.$fontSize;
-    color: var.$colorLightRed;
+    font-weight: 900;
+    font-size: 4 * var.$fontSize;
+    color: var.$black;
+    letter-spacing: 0.2 * var.$letterSpacing;
+    line-height: var.$lineHeight;
     visibility: hidden;
     opacity: 0;
     animation: fadeAnimation 0.08 * $animationDuration 0.75 * $animationDelay forwards;
@@ -259,15 +250,15 @@ html {
 
 .banner-btn {
     position: relative;
-    width: 15 * var.$lineHeight + rem;
-    height: 6 * var.$lineHeight + rem;
+    width: 20 * var.$lineHeight + rem;
+    height: 4 * var.$lineHeight + rem;
     color: var.$colorLightRed;
-    font-size: 4 * var.$fontSize;
-    font-weight: 300;
-    letter-spacing: 0.1 * var.$letterSpacing;
+    font-size: 3.5 * var.$fontSize;
+    font-weight: 100;
+    letter-spacing: 0.2 * var.$letterSpacing;
     text-transform: uppercase;
     border-radius: 8 * var.$borderRadius;
-    border: 0.1 * var.$borderWidth solid var.$colorDarkRed;
+    border: none;
     background: linear-gradient(to right, var.$colorMediumRed, var.$colorDarkRed);
     box-shadow: 2rem 2rem 5rem var.$boxShadowColor-4;
     text-shadow: 0.6rem 0.3rem 0.8rem var.$boxShadowColor-1;
@@ -346,115 +337,81 @@ html {
     background-color: var.$black;
 }
 
-.section-2-bg {
-    position: absolute;
-    top: 0;
-    left: $left;
-    z-index: 0;
-    transform: rotate(20deg);
-    opacity: 0.3;
+.section-2-container {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-size: 2.2 * var.$fontSize;
+    font-weight: 100;
+    letter-spacing: 0.2 * var.$letterSpacing;
+    color: var.$colorLightRed;
+
+    h2,
+    h3 {
+        font-weight: 600;
+        line-height: var.$lineHeight;
+        margin-left: 3 * $margin;
+        margin-bottom: 2 * $margin;
+    }
+
+    h3 {
+        text-align: center;
+    }
+
+    img {
+        margin-top: -4 * $margin;
+        position: absolute;
+        z-index: 0;
+        transform: rotate(20deg);
+        opacity: 0.2;
+        height: 0.6 * $height;
+    }
 }
 
-.section-2-bg img {
-    height: 0.5 * $height;
+.section-2-description {
+    z-index: 1;
+    margin-left: 4 * $margin;
+    line-height: var.$lineHeight;
 }
 
 .video-wrapper {
-    width: 70rem;
-    height: 40rem;
-    position: absolute;
-    top: $top;
-    right: 1.5 * $left;
-    box-shadow: 3rem 3rem 3rem var.$boxShadowColor-4;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 100px;
     overflow: hidden;
 }
 
 .video {
-    width: 100%;
-    height: 100%;
+    width: 70%;
+    height: 40%;
     object-fit: cover;
-    opacity: 0.3;
+    box-shadow: 0 0 2rem 2rem var.$boxShadowColor-3;
     transition: 1.5 * var.$transition;
 }
 
-.controls {
-    width: 100%;
-    position: absolute;
-    bottom: 0;
-    background-color: var.$boxShadowColor-3;
-    transform: translateY(calc(100% - 0.4rem));
-    transition: 2 * var.$transition;
-}
-
-.video-wrapper:hover .controls {
-    transform: translateY(0);
-}
-
-.buttons {
-    padding: $padding 0.5 * $padding 0.5 * $padding;
-}
-
-.buttons button {
-    background: none;
-    border: none;
-    cursor: pointer;
-}
-
-.buttons i {
-    font-size: 2.5 * var.$fontSize;
-    color: var.$colorLightRed;
-}
-
-.video-bar-wrapper {
-    width: 100%;
-    height: 0.25 * var.$lineHeight + rem;
-    background-color: var.$black;
-    position: absolute;
-    top: 0;
-    left: 0;
-}
-
-.video-bar {
-    width: 0;
-    height: 100%;
-    background-color: var.$colorMediumRed;
-    transition: var.$transition linear;
-}
-
-.fa-quote-left {
-    position: absolute;
-    top: 0.3rem;
-    left: 0;
-    font-size: 4 * var.$fontSize;
-    opacity: 0.1;
-}
-
 .section-2-paragraph {
-    width: 95rem;
+    width: 80%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: justify;
     padding: 2 * $padding;
-    position: absolute;
-    bottom: 7rem;
-    right: 15rem;
     font-size: 1.8 * var.$fontSize;
     font-weight: 100;
-    letter-spacing: 0.2 * var.$letterSpacing;
+    letter-spacing: 0.3 * var.$letterSpacing;
+    line-height: var.$lineHeight;
     color: var.$colorLightRed;
     border-top: 0.4 * var.$borderWidth double var.$colorLightRed;
     border-bottom: 0.4 * var.$borderWidth double var.$colorLightRed;
     text-shadow: 1rem 1rem 2rem var.$boxShadowColor-3;
-}
-
-.fa-quote-right {
-    position: absolute;
-    bottom: 0.3rem;
-    right: 0.8rem;
-    font-size: 4 * var.$fontSize;
-    opacity: 0.1;
 }
 
 /* SECTION 3 */
@@ -737,6 +694,7 @@ html {
     color: var.$colorMediumRed;
 }
 .copyright {
+    width: $width;
     font-size: 1.5 * var.$fontSize;
     color: var.$colorLightRed;
     font-weight: 100;
@@ -757,10 +715,6 @@ html {
     .section-2-paragraph {
         width: 90rem;
         right: 15rem;
-    }
-
-    .section-3 .section-heading-line {
-        margin-right: 1.5 * $margin;
     }
 }
 

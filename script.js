@@ -2,11 +2,27 @@
 
 const menu = document.querySelector('.menu');
 const navbar = document.querySelector('.navbar');
+const menuBtn = document.querySelector('.list-icon');
+const backBtn = document.querySelector('.back-icon');
 
-menu.addEventListener('click', () => {
-    navbar.classList.toggle('change');
-    menu.classList.toggle('change');
-});
+function showBackButton() {
+    backBtn.classList.add('show');
+    menuBtn.classList.add('hidden');
+
+    navbar.classList.add('change');
+    menu.classList.add('change');
+}
+
+function showMenuButton() {
+    menuBtn.classList.remove('hidden');
+    backBtn.classList.remove('show');
+
+    navbar.classList.remove('change');
+    menu.classList.remove('change');
+}
+
+menuBtn.addEventListener('click', showBackButton);
+backBtn.addEventListener('click', showMenuButton);
 
 // Section 2
 

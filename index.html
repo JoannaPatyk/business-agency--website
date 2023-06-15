@@ -6,40 +6,42 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
         <link
-            href="https://fonts.googleapis.com/css2?family=Oswald:wght@100;200;300;400;500;800;900&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@100;200;300;400;500;800;900&display=swap"
             rel="stylesheet"
+        />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
         />
         <link rel="stylesheet" href="css/styles.css" />
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
-        <title>Business Agency</title>
+
+        <title>Crane Business Agency</title>
     </head>
 
     <body>
         <nav class="navbar">
             <div class="logo">
                 <a href="#">
-                    <div class="logo-img"><img src="img/origami-red.png" alt="Logo" /></div>
-                    <div class="logo-name"><span>C</span>rane - <span>B</span>usiness <span>A</span>gency</div>
+                    <div class="logo-name"><span>C</span>rane <span>B</span>usiness <span>A</span>gency</div>
                 </a>
             </div>
             <div class="nav-list">
-                <a href="#" class="nav-link">home</a>
-                <a href="#" class="nav-link">about</a>
-                <a href="#" class="nav-link">pricing</a>
-                <a href="#" class="nav-link">blog</a>
-                <a href="#" class="nav-link">contact</a>
-                <div class="logo-img-2"><img src="img/origami-red.png" alt="Logo" /></div>
+                <div class="nav-links">
+                    <a href="#" class="nav-link">home</a>
+                    <a href="#" class="nav-link">about</a>
+                    <a href="#" class="nav-link">pricing</a>
+                    <a href="#" class="nav-link">contact</a>
+                </div>
             </div>
         </nav>
-        <div class="menu">
-            <div class="line line-1"></div>
-            <div class="line line-2"></div>
-            <div class="line line-3"></div>
+        <div class="menu-container">
+            <span class="material-symbols-outlined menu list-icon"> menu </span>
+            <span class="material-symbols-outlined menu back-icon"> forward </span>
         </div>
 
         <div class="container">
             <!-- Section 1 -->
-
             <section class="section-1" id="home">
                 <div class="banner">
                     <h1 class="banner-heading">
@@ -49,11 +51,15 @@
                         <span class="heading-4">developing strategy</span>
                     </h1>
                     <p class="banner-paragraph">
-                        Our goal is to provide customers with the highest quality services. <br />
-                        We carry out our tasks based on the highest professional standards <br />
-                        and developed solutions and tools that constitute our know-how.
+                        Our goal is to provide customers with the highest quality services...
                     </p>
                     <button class="banner-btn">Discover Now</button>
+                </div>
+
+                <div class="video-container">
+                    <video autoplay loop muted>
+                        <source src="img/sea.mp4" type="video/mp4" />
+                    </video>
                 </div>
             </section>
 
@@ -61,36 +67,36 @@
 
             <section class="section-2" id="about-us">
                 <h1 class="section-heading">About Us</h1>
-                <div class="section-2-bg"><img src="img/origami-black.png" alt="" /></div>
-                <div class="section-heading-line"></div>
-                <div class="video-wrapper">
-                    <video src="img/team.mp4" class="video"></video>
-                    <div class="controls">
-                        <div class="video-bar-wrapper">
-                            <div class="video-bar"></div>
-                        </div>
-                        <div class="buttons">
-                            <button>
-                                <i class="far fa-play-circle"></i>
-                            </button>
-                        </div>
-                    </div>
+
+                <div class="section-2-container">
+                    <img src="img/origami-black.png" alt="" />
+                    <h2>What do we do?</h2>
+                    <h3>We offer a wide range of advertising services, which including:</h3>
+                    <ul class="section-2-description">
+                        <li>Developing marketing strategies</li>
+                        <li>Designing and producing advertising graphics</li>
+                        <li>Creating and optimizing online advertising campaigns</li>
+                        <li>Managing social media presence Video content creation and production</li>
+                        <li>Website optimization (SEO)</li>
+                        <li>Organizing events and promotional activities</li>
+                    </ul>
                 </div>
-                <p class="section-2-paragraph">
-                    <i class="fas fa-quote-left"></i>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus quis quibusdam quas iure
-                    doloremque ullam, assumenda in explicabo voluptas quidem non pariatur error mollitia accusantium
-                    maiores eaque harum esse unde! Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus
-                    quis quibusdam quas iure doloremque ullam...
-                    <i class="fas fa-quote-right"></i>
-                </p>
+
+                <div class="video-wrapper">
+                    <video src="img/team.mp4" class="video" autoplay loop muted></video>
+
+                    <p class="section-2-paragraph">
+                        We are a dynamic team of professionals who are passionate about creating innovative and
+                        effective advertising campaigns. Our mission is to help our clients achieve their marketing
+                        goals and strengthen their brand in the market.
+                    </p>
+                </div>
             </section>
 
             <!-- Section 3 -->
 
             <section class="section-3" id="pricing">
                 <h1 class="section-heading">Pricing</h1>
-                <div class="section-heading-line"></div>
 
                 <div class="swiper">
                     <div class="pricing-cards-wrapper swiper-wrapper">
@@ -225,7 +231,6 @@
 
             <section class="section-4" id="contact">
                 <h1 class="section-heading">Contact</h1>
-                <div class="section-heading-line"></div>
 
                 <div class="contact-wrapper">
                     <div class="contact-details">
@@ -249,28 +254,28 @@
                         </div>
                     </div>
                     <div class="contact-logo">
-                        <i class="fa-regular fa-handshake"></i>
+                        <!-- <i class="fa-regular fa-handshake"></i> -->
                         <h1>Get in Touch</h1>
-                        <i class="fa-regular fa-handshake"></i>
+                        <!-- <i class="fa-regular fa-handshake"></i> -->
                     </div>
-                    <form class="contact-form">
+                    <!-- <form class="contact-form">
                         <input type="text" placeholder="Your Name..." />
                         <input type="email" placeholder="Your Email..." />
                         <textarea placeholder="Your Message..."></textarea>
                         <input class="send-message" type="submit" value="Send Message" />
-                    </form>
+                    </form> -->
                 </div>
             </section>
 
             <!-- Footer -->
 
             <footer class="footer">
-                <div class="footer-nav">
+                <!-- <div class="footer-nav">
                     <a href="#home">Home</a>
                     <a href="#about-us">About Us</a>
                     <a href="#pricing">Pricing</a>
                     <a href="#contact">Contact</a>
-                </div>
+                </div> -->
                 <p class="copyright">Crane Business Agency &copy; All Rights Reserved</p>
             </footer>
         </div>
