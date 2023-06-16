@@ -1,0 +1,34 @@
+@mixin flex {
+    display: flex;
+    align-items: center;
+}
+
+@mixin button {
+    position: relative;
+    width: 20 * var.$lineHeight + rem;
+    border-radius: 8 * var.$borderRadius;
+    border: none;
+    box-shadow: 2rem 2rem 5rem var.$boxShadowColor-4;
+    text-shadow: 0.6rem 0.3rem 0.8rem var.$boxShadowColor-1;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.2 * var.$letterSpacing;
+    color: var.$colorLightRed;
+    cursor: pointer;
+    visibility: hidden;
+    overflow: hidden;
+    opacity: 0;
+    animation: fadeAnimation 0.08 * var.$animationDuration var.$animationDelay forwards;
+}
+
+@mixin button-before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -10 * var.$left;
+    width: 100%;
+    height: 100%;
+    background: var.$linear-gradient-1;
+    transform: skewX(-30deg);
+    transition: 2.5 * var.$transition;
+}

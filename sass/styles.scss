@@ -1,18 +1,5 @@
 @use './variables.scss' as var;
-
-$padding: 1rem;
-$margin: 2rem;
-$width: 100vw;
-$height: 100vh;
-
-$top: 10%;
-$left: 10%;
-
-$animationDuration: 12s;
-$animationDelay: 2s;
-
-$backgroundImageSection: url(/img/black_sand.jpg);
-$backgroundVideo: url(/img/sea.mp4);
+@import './mixins.scss';
 
 * {
     margin: 0;
@@ -29,15 +16,6 @@ html {
     scroll-behavior: smooth;
 }
 
-.section-heading {
-    font-weight: 900;
-    font-size: 5 * var.$fontSize;
-    writing-mode: vertical-rl;
-    text-orientation: upright;
-    color: var.$colorMediumRed;
-    text-transform: uppercase;
-}
-
 /* NAVBAR */
 
 .navbar {
@@ -45,27 +23,26 @@ html {
     top: 0;
     left: 0;
     z-index: 10;
-    width: $width;
+    width: var.$width;
     height: 5 * var.$lineHeight + rem;
-    padding: $padding;
+    padding: var.$padding;
     display: grid;
     grid-template-rows: 3fr 1fr 1fr;
     background-color: var.$black;
     box-shadow: 0 0 2rem 1rem var.$boxShadowColor-5;
     transition: 2.5 * var.$transition;
-    animation: animateNavbar 0.08 * $animationDuration 0.25 * $animationDelay forwards;
+    animation: animateNavbar 0.08 * var.$animationDuration 0.25 * var.$animationDelay forwards;
 }
 
 .navbar.change {
-    height: $height;
+    height: var.$height;
     background-color: var.$black;
     box-shadow: none;
 }
 
 .logo {
     position: relative;
-    display: flex;
-    align-items: center;
+    @include flex;
 }
 
 .logo-name {
@@ -83,10 +60,9 @@ html {
 }
 
 .nav-links {
-    height: $height;
-    display: flex;
+    height: var.$height;
+    @include flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
 }
 
@@ -107,7 +83,7 @@ html {
 }
 
 .nav-link {
-    margin: 1.25 * $margin 0;
+    margin: 1.25 * var.$margin 0;
     font-size: 4.5 * var.$fontSize;
     font-weight: 700;
     letter-spacing: 0.3 * var.$letterSpacing;
@@ -124,9 +100,8 @@ html {
 .menu-container {
     width: 6rem;
     height: 6rem;
-    display: flex;
+    @include flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
     justify-content: space-evenly;
     cursor: pointer;
@@ -161,7 +136,7 @@ html {
 
 .section-1 {
     width: 100%;
-    height: $height;
+    height: var.$height;
 }
 
 .video-container {
@@ -189,14 +164,14 @@ html {
 .banner {
     width: 100%;
     position: absolute;
-    top: 2.5 * $top;
-    left: 5 * $left;
+    top: 2.5 * var.$top;
+    left: 5 * var.$left;
     transform: translateX(-50%);
     text-align: center;
 }
 
 .banner-heading {
-    margin: 1.5 * $margin 0;
+    margin: 1.5 * var.$margin 0;
     height: 6 * var.$lineHeight + rem;
     perspective: 25 * var.$lineHeight + rem;
     overflow: hidden;
@@ -205,9 +180,8 @@ html {
 .banner-heading span {
     position: absolute;
     width: 100%;
-    display: flex;
+    @include flex;
     justify-content: center;
-    align-items: center;
     font-size: 8 * var.$fontSize;
     letter-spacing: 2 * var.$letterSpacing;
     font-weight: 800;
@@ -219,25 +193,25 @@ html {
 }
 
 .heading-1 {
-    animation: animationHeading $animationDuration 1.5 * $animationDelay infinite;
+    animation: animationHeading var.$animationDuration 1.5 * var.$animationDelay infinite;
 }
 
 .heading-2 {
-    animation: animationHeading $animationDuration 3 * $animationDelay infinite;
+    animation: animationHeading var.$animationDuration 3 * var.$animationDelay infinite;
 }
 
 .heading-3 {
-    animation: animationHeading $animationDuration 4.5 * $animationDelay infinite;
+    animation: animationHeading var.$animationDuration 4.5 * var.$animationDelay infinite;
 }
 
 .heading-4 {
-    animation: animationHeading $animationDuration 6 * $animationDelay infinite;
+    animation: animationHeading var.$animationDuration 6 * var.$animationDelay infinite;
 }
 
 .banner-paragraph {
     width: 50%;
-    margin: 0 auto 3 * $margin;
-    padding: $padding;
+    margin: 0 auto 3 * var.$margin;
+    padding: var.$padding;
     font-weight: 900;
     font-size: 4 * var.$fontSize;
     color: var.$black;
@@ -245,44 +219,22 @@ html {
     line-height: var.$lineHeight;
     visibility: hidden;
     opacity: 0;
-    animation: fadeAnimation 0.08 * $animationDuration 0.75 * $animationDelay forwards;
+    animation: fadeAnimation 0.08 * var.$animationDuration 0.75 * var.$animationDelay forwards;
 }
 
 .banner-btn {
-    position: relative;
-    width: 20 * var.$lineHeight + rem;
+    @include button;
     height: 4 * var.$lineHeight + rem;
-    color: var.$colorLightRed;
     font-size: 3.5 * var.$fontSize;
-    font-weight: 100;
-    letter-spacing: 0.2 * var.$letterSpacing;
-    text-transform: uppercase;
-    border-radius: 8 * var.$borderRadius;
-    border: none;
     background: linear-gradient(to right, var.$colorMediumRed, var.$colorDarkRed);
-    box-shadow: 2rem 2rem 5rem var.$boxShadowColor-4;
-    text-shadow: 0.6rem 0.3rem 0.8rem var.$boxShadowColor-1;
-    cursor: pointer;
-    visibility: hidden;
-    overflow: hidden;
-    opacity: 0;
-    animation: fadeAnimation 0.08 * $animationDuration $animationDelay forwards;
 }
 
 .banner-btn::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -10 * $left;
-    width: 100%;
-    height: 100%;
-    background: var.$linear-gradient-1;
-    transform: skewX(-30deg);
-    transition: 2.5 * var.$transition;
+    @include button-before;
 }
 
 .banner-btn:hover::before {
-    left: 10 * $left;
+    left: 10 * var.$left;
 }
 
 @keyframes animationHeading {
@@ -328,11 +280,10 @@ html {
 
 .section-2 {
     width: 100%;
-    height: $height;
+    height: var.$height;
     position: relative;
-    display: flex;
-    align-items: center;
-    padding: 0 10 * $padding;
+    @include flex;
+    padding: 0 10 * var.$padding;
     box-shadow: 0 0 3rem 3rem var.$boxShadowColor-2;
     background-color: var.$black;
     overflow: hidden;
@@ -341,8 +292,7 @@ html {
 .section-2-container {
     width: 50%;
     height: 100%;
-    display: flex;
-    align-items: center;
+    @include flex;
     justify-content: center;
     flex-direction: column;
     font-size: 2.2 * var.$fontSize;
@@ -354,8 +304,8 @@ html {
     h3 {
         font-weight: 600;
         line-height: var.$lineHeight;
-        margin-left: 3 * $margin;
-        margin-bottom: 2 * $margin;
+        margin-left: 3 * var.$margin;
+        margin-bottom: 2 * var.$margin;
     }
 
     h3 {
@@ -363,7 +313,7 @@ html {
     }
 
     img {
-        margin-top: -4 * $margin;
+        margin-top: -4 * var.$margin;
 
         transform: rotate(20deg);
     }
@@ -373,21 +323,20 @@ img {
     position: absolute;
     z-index: 0;
     opacity: 0.3;
-    height: 0.7 * $height;
+    height: 0.7 * var.$height;
 }
 
 .section-2-description {
     z-index: 1;
-    margin-left: 4 * $margin;
+    margin-left: 4 * var.$margin;
     line-height: var.$lineHeight;
 }
 
 .video-wrapper {
     width: 50%;
     height: 100%;
-    display: flex;
+    @include flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
     gap: 100px;
     overflow: hidden;
@@ -411,12 +360,11 @@ img {
 .section-2-paragraph {
     width: 80%;
     z-index: 1;
-    display: flex;
+    @include flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
     text-align: center;
-    padding: 2 * $padding;
+    padding: 2 * var.$padding;
     font-size: 1.6 * var.$fontSize;
     font-weight: 100;
     letter-spacing: 0.1 * var.$letterSpacing;
@@ -429,11 +377,10 @@ img {
 
 .section-3 {
     width: 100%;
-    height: $height;
-    display: flex;
-    align-items: center;
-    padding-left: 10 * $padding;
-    background-image: $backgroundImageSection;
+    height: var.$height;
+    @include flex;
+    padding-left: 2 * var.$padding;
+    background-image: var.$backgroundImageSection;
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -441,13 +388,13 @@ img {
 .pricing-cards-wrapper {
     width: 100%;
     display: flex;
-    justify-content: space-evenly;
-    padding: 2 * $padding;
+    justify-content: center;
+    padding: 2 * var.$padding;
 }
 
 .pricing-card {
     width: 40rem !important;
-    height: 60rem !important;
+    height: 65rem !important;
     background-color: var.$black;
     border-radius: var.$borderRadius;
 }
@@ -455,18 +402,16 @@ img {
 .pricing-card-front {
     width: 100%;
     height: 100%;
-    display: flex;
+    @include flex;
     flex-direction: column;
-    align-items: center;
     justify-content: space-between;
 }
 
 .pricing-card-heading {
     width: 100%;
     height: 3 * var.$lineHeight + rem;
-    display: flex;
-    align-items: center;
-    padding-left: 3 * $padding;
+    @include flex;
+    padding-left: 3 * var.$padding;
     color: var.$colorLightRed;
     font-size: 2 * var.$fontSize;
     font-weight: 600;
@@ -474,24 +419,27 @@ img {
     text-transform: uppercase;
 }
 
+.heading-free,
+.heading-basic,
+.heading-standard,
+.heading-premium {
+    border-radius: var.$borderRadius var.$borderRadius 0 0;
+}
+
 .heading-free {
     background: var.$linear-gradient-blue;
-    border-radius: var.$borderRadius var.$borderRadius 0 0;
 }
 
 .heading-basic {
     background: var.$linear-gradient-yellow;
-    border-radius: var.$borderRadius var.$borderRadius 0 0;
 }
 
 .heading-standard {
     background: var.$linear-gradient-green;
-    border-radius: var.$borderRadius var.$borderRadius 0 0;
 }
 
 .heading-premium {
     background: var.$linear-gradient-red;
-    border-radius: var.$borderRadius var.$borderRadius 0 0;
 }
 
 .pricing-card-price {
@@ -502,7 +450,7 @@ img {
 }
 
 .pricing-card-list li {
-    margin: 0.8 * $margin;
+    margin: 0.8 * var.$margin;
     list-style: none;
 }
 
@@ -524,7 +472,7 @@ img {
 
 .pricing-card-list {
     text-align: center;
-    padding: $padding;
+    padding: var.$padding;
 }
 
 .pricing-card-list i {
@@ -536,7 +484,7 @@ img {
     font-weight: 500;
     font-size: 1.4 * var.$fontSize;
     letter-spacing: 0.1 * var.$letterSpacing;
-    line-height: 0.7 * var.$lineHeight;
+    line-height: 0.8 * var.$lineHeight;
 }
 
 .pricing-card-list strong {
@@ -545,40 +493,36 @@ img {
 }
 
 .pricing-card-btn {
-    width: 10 * var.$lineHeight + rem;
+    @include button;
     height: 2 * var.$lineHeight + rem;
-    margin-bottom: 1.5 * $margin;
-    border: none;
-    border-radius: 3 * var.$borderRadius;
-    font-size: 1.8 * var.$fontSize;
-    font-weight: 200;
-    color: var.$colorLightRed;
-    text-shadow: 0.3rem 0.3rem 0.6rem var.$boxShadowColor-2;
-    text-transform: uppercase;
-    letter-spacing: 0.2 * var.$letterSpacing;
-    transition: 2.5 * var.$transition;
-    cursor: pointer;
+    width: 10 * var.$lineHeight + rem;
+    font-size: 2 * var.$fontSize;
+    color: var.$black;
+    margin-bottom: 1.5 * var.$margin;
 }
 
-.pricing-card-btn:hover {
-    transform: scale(0.98);
-    box-shadow: 0 0 0.5rem var.$silver;
+.pricing-card-btn::before {
+    @include button-before;
+}
+
+.pricing-card-btn:hover::before {
+    left: 10 * var.$left;
 }
 
 .btn-free {
-    background-color: var.$blue;
+    background: var.$linear-gradient-blue;
 }
 
 .btn-basic {
-    background-color: var.$brown;
+    background: var.$linear-gradient-yellow;
 }
 
 .btn-standard {
-    background-color: var.$green;
+    background: var.$linear-gradient-green;
 }
 
 .btn-premium {
-    background-color: var.$red;
+    background: var.$linear-gradient-red;
 }
 
 /* SECTION 4 */
@@ -586,10 +530,9 @@ img {
 .section-4 {
     width: 100%;
     height: 100vh;
-    display: flex;
-    align-items: center;
-    padding-left: 10 * $padding;
-    padding-bottom: 2 * $padding;
+    @include flex;
+    padding-left: 10 * var.$padding;
+    padding-bottom: 2 * var.$padding;
     background-color: var.$black;
     box-shadow: 0 0 3rem 3rem var.$boxShadowColor-3;
 }
@@ -605,19 +548,19 @@ img {
     font-size: 2 * var.$fontSize;
     font-weight: 500;
     color: var.$colorLightRed;
-    margin-bottom: 1.5 * $margin;
+    margin-bottom: 1.5 * var.$margin;
     letter-spacing: 0.2 * var.$letterSpacing;
 }
 
 .contact-details {
     display: flex;
-    margin-bottom: 3 * $margin;
+    margin-bottom: 3 * var.$margin;
 }
 
 .contact-details div {
     width: 18rem;
     text-align: center;
-    margin: 2 * $margin;
+    margin: 2 * var.$margin;
 }
 
 .contact-details i {
@@ -631,27 +574,43 @@ img {
     text-transform: uppercase;
     color: var.$colorLightRed;
     letter-spacing: 0.5 * var.$letterSpacing;
-    margin: $margin 0;
+    margin: var.$margin 0;
 }
 
 .contact-details p {
     font-size: 2 * var.$fontSize;
     font-weight: 400;
     color: var.$colorLightRed;
-    padding: 0.5 * $padding 0;
+    padding: 0.5 * var.$padding 0;
 }
 
 .contact-form {
-    width: 70rem;
-    display: flex;
+    width: 80rem;
+    @include flex;
     flex-direction: column;
     gap: 25px;
+
+    .send-message {
+        @include button;
+        height: 2 * var.$lineHeight + rem;
+        font-size: 2 * var.$fontSize;
+        background: linear-gradient(to right, var.$colorMediumRed, var.$colorDarkRed);
+    }
+
+    .send-message::before {
+        @include button-before;
+    }
+
+    .send-message:hover::before {
+        left: 10 * var.$left;
+    }
 }
 
 .contact-form input,
 .contact-form textarea {
-    padding: 1.2 * $padding;
-    margin-bottom: 0.5 $margin;
+    width: 80rem;
+    padding: 1.2 * var.$padding;
+    margin-bottom: 0.5 var.$margin;
     background-color: var.$boxShadowColor-2;
     color: var.$colorLightRed;
     font-weight: 200;
@@ -663,39 +622,23 @@ img {
 
 .contact-form textarea {
     max-width: 100%;
-    max-height: 7.5 * var.$lineHeight + em;
-    min-height: 4 * var.$lineHeight + em;
-}
-
-.contact-form .send-message {
-    text-transform: uppercase;
-    font-weight: 400;
-    font-size: 2 * var.$fontSize;
-    color: var.$colorLightRed;
-    background-color: var.$colorDarkRed;
-    transition: 2.5 * var.$transition;
-    cursor: pointer;
-}
-
-.contact-form .send-message:hover {
-    background-color: var.$colorMediumRed;
-    transform: scale(0.98);
+    max-height: 7.5 * var.$lineHeight + rem;
+    min-height: 4 * var.$lineHeight + rem;
 }
 
 /* Footer */
 
 .footer {
     width: 100%;
-    display: flex;
-    align-items: center;
+    @include flex;
     justify-content: space-between;
     background-color: rgba(1, 1, 1, 0.9);
     box-shadow: 0 0 2rem 1rem var.$boxShadowColor-5;
-    padding: 1.6 * $padding;
+    padding: 1.6 * var.$padding;
 }
 
 .copyright {
-    width: $width;
+    width: var.$width;
     font-size: 1.5 * var.$fontSize;
     color: var.$colorLightRed;
     font-weight: 100;
@@ -725,7 +668,7 @@ img {
     }
 
     .logo-name {
-        left: 0.7 * $left;
+        left: 0.7 * var.$left;
     }
 
     .video-wrapper {
@@ -744,7 +687,7 @@ img {
 
 @media (max-width: 1500px) {
     .logo-name {
-        left: $left;
+        left: var.$left;
     }
 
     .section-heading-line {
@@ -795,11 +738,11 @@ img {
 
     .section-3 {
         height: auto;
-        padding: 5 * $padding 0 10 * $padding;
+        padding: 5 * var.$padding 0 10 * var.$padding;
     }
 
     .section-3 .section-heading {
-        margin-bottom: 3.5 * $margin;
+        margin-bottom: 3.5 * var.$margin;
     }
 
     .swiper-container {
@@ -808,7 +751,7 @@ img {
 
     .section-4 {
         height: auto;
-        padding: 5 * $padding 0;
+        padding: 5 * var.$padding 0;
     }
 }
 
@@ -824,9 +767,9 @@ img {
     }
 
     .logo-name {
-        top: 3 * $top;
-        left: $left;
-        margin: $margin;
+        top: 3 * var.$top;
+        left: var.$left;
+        margin: var.$margin;
         font-size: 4rem;
     }
 
@@ -835,7 +778,7 @@ img {
     }
 
     .banner {
-        top: 3 * $top;
+        top: 3 * var.$top;
     }
 
     .banner-heading {
@@ -891,11 +834,11 @@ img {
 
     .section-1,
     .section-2 {
-        height: 0.8 * $height;
+        height: 0.8 * var.$height;
     }
 
     .section-3 {
-        height: 0.7 * $height;
+        height: 0.7 * var.$height;
     }
 
     .video-wrapper {
@@ -913,7 +856,7 @@ img {
     }
 
     .footer-nav {
-        margin-bottom: $margin;
+        margin-bottom: var.$margin;
     }
 }
 
@@ -941,7 +884,7 @@ img {
 
     .contact-details div {
         width: 18rem;
-        margin: 1.5 * $padding $padding;
+        margin: 1.5 * var.$padding var.$padding;
     }
 
     .contact-form {
