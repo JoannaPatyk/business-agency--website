@@ -30,12 +30,12 @@ html {
 }
 
 .section-heading {
-    font-weight: 100;
-    font-size: 8 * var.$fontSize;
+    font-weight: 900;
+    font-size: 5 * var.$fontSize;
     writing-mode: vertical-rl;
-    transform: rotate(-180deg);
-    color: var.$colorLightRed;
-    border-left: 6px double var.$colorLightRed;
+    text-orientation: upright;
+    color: var.$colorMediumRed;
+    text-transform: uppercase;
 }
 
 /* NAVBAR */
@@ -335,6 +335,7 @@ html {
     padding: 0 10 * $padding;
     box-shadow: 0 0 3rem 3rem var.$boxShadowColor-2;
     background-color: var.$black;
+    overflow: hidden;
 }
 
 .section-2-container {
@@ -363,12 +364,16 @@ html {
 
     img {
         margin-top: -4 * $margin;
-        position: absolute;
-        z-index: 0;
+
         transform: rotate(20deg);
-        opacity: 0.2;
-        height: 0.6 * $height;
     }
+}
+
+img {
+    position: absolute;
+    z-index: 0;
+    opacity: 0.3;
+    height: 0.7 * $height;
 }
 
 .section-2-description {
@@ -386,11 +391,18 @@ html {
     justify-content: center;
     gap: 100px;
     overflow: hidden;
+
+    img {
+        bottom: -20%;
+        z-index: 0;
+        transform: rotate(180deg);
+    }
 }
 
 .video {
     width: 70%;
     height: 40%;
+    z-index: 1;
     object-fit: cover;
     box-shadow: 0 0 2rem 2rem var.$boxShadowColor-3;
     transition: 1.5 * var.$transition;
@@ -398,19 +410,18 @@ html {
 
 .section-2-paragraph {
     width: 80%;
+    z-index: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    text-align: justify;
+    text-align: center;
     padding: 2 * $padding;
-    font-size: 1.8 * var.$fontSize;
+    font-size: 1.6 * var.$fontSize;
     font-weight: 100;
-    letter-spacing: 0.3 * var.$letterSpacing;
+    letter-spacing: 0.1 * var.$letterSpacing;
     line-height: var.$lineHeight;
     color: var.$colorLightRed;
-    border-top: 0.4 * var.$borderWidth double var.$colorLightRed;
-    border-bottom: 0.4 * var.$borderWidth double var.$colorLightRed;
     text-shadow: 1rem 1rem 2rem var.$boxShadowColor-3;
 }
 
@@ -431,12 +442,12 @@ html {
     width: 100%;
     display: flex;
     justify-content: space-evenly;
-    padding: 5 * $padding;
+    padding: 2 * $padding;
 }
 
 .pricing-card {
-    width: 25rem !important;
-    height: 45rem !important;
+    width: 40rem !important;
+    height: 60rem !important;
     background-color: var.$black;
     border-radius: var.$borderRadius;
 }
@@ -452,13 +463,14 @@ html {
 
 .pricing-card-heading {
     width: 100%;
-    height: 2.5 * var.$lineHeight + rem;
+    height: 3 * var.$lineHeight + rem;
     display: flex;
     align-items: center;
-    padding-left: 2 * $padding;
+    padding-left: 3 * $padding;
     color: var.$colorLightRed;
     font-size: 2 * var.$fontSize;
-    font-weight: 300;
+    font-weight: 600;
+    letter-spacing: var.$letterSpacing;
     text-transform: uppercase;
 }
 
@@ -483,14 +495,14 @@ html {
 }
 
 .pricing-card-price {
-    font-size: 6 * var.$fontSize;
-    font-weight: 800;
+    font-size: 4 * var.$fontSize;
+    font-weight: 900;
     color: var.$colorLightRed;
     letter-spacing: 0.3 * var.$letterSpacing;
 }
 
 .pricing-card-list li {
-    margin-bottom: 0.25 * $margin;
+    margin: 0.8 * $margin;
     list-style: none;
 }
 
@@ -510,21 +522,32 @@ html {
     color: var.$red;
 }
 
+.pricing-card-list {
+    text-align: center;
+    padding: $padding;
+}
+
 .pricing-card-list i {
     font-size: 1.8 * var.$fontSize;
     width: 1.5 * var.$lineHeight + rem;
 }
 
 .pricing-card-list span {
-    font-weight: 300;
-    font-size: 1.8 * var.$fontSize;
+    font-weight: 500;
+    font-size: 1.4 * var.$fontSize;
     letter-spacing: 0.1 * var.$letterSpacing;
+    line-height: 0.7 * var.$lineHeight;
+}
+
+.pricing-card-list strong {
+    font-weight: 900;
+    font-size: 1.6 * var.$fontSize;
 }
 
 .pricing-card-btn {
-    width: 8 * var.$lineHeight + rem;
+    width: 10 * var.$lineHeight + rem;
     height: 2 * var.$lineHeight + rem;
-    margin-bottom: $margin;
+    margin-bottom: 1.5 * $margin;
     border: none;
     border-radius: 3 * var.$borderRadius;
     font-size: 1.8 * var.$fontSize;
@@ -532,7 +555,7 @@ html {
     color: var.$colorLightRed;
     text-shadow: 0.3rem 0.3rem 0.6rem var.$boxShadowColor-2;
     text-transform: uppercase;
-    letter-spacing: 0.1 * var.$letterSpacing;
+    letter-spacing: 0.2 * var.$letterSpacing;
     transition: 2.5 * var.$transition;
     cursor: pointer;
 }
@@ -615,6 +638,7 @@ html {
     line-height: 2 * var.$lineHeight + rem;
     margin-bottom: 0.5 * $margin;
 }
+
 .contact-wrapper h1 {
     font-size: 4 * var.$fontSize;
     font-weight: 600;
