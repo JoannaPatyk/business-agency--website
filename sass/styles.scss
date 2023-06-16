@@ -595,15 +595,23 @@ img {
 }
 
 .contact-wrapper {
-    width: 80%;
+    width: 90%;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
+.contact-wrapper h1 {
+    font-size: 2 * var.$fontSize;
+    font-weight: 500;
+    color: var.$colorLightRed;
+    margin-bottom: 1.5 * $margin;
+    letter-spacing: 0.2 * var.$letterSpacing;
+}
+
 .contact-details {
     display: flex;
-    margin-bottom: 2 * $margin;
+    margin-bottom: 3 * $margin;
 }
 
 .contact-details div {
@@ -612,56 +620,40 @@ img {
     margin: 2 * $margin;
 }
 
-.contact-details i,
-.contact-wrapper i {
-    font-size: 5 * var.$fontSize;
+.contact-details i {
+    font-size: 6 * var.$fontSize;
     color: var.$colorMediumRed;
 }
 
 .contact-details h3 {
-    font-size: 2.5 * var.$fontSize;
+    font-size: 3 * var.$fontSize;
     font-weight: 600;
     text-transform: uppercase;
     color: var.$colorLightRed;
+    letter-spacing: 0.5 * var.$letterSpacing;
     margin: $margin 0;
 }
 
 .contact-details p {
-    font-size: 1.6 * var.$fontSize;
-    font-weight: 300;
+    font-size: 2 * var.$fontSize;
+    font-weight: 400;
     color: var.$colorLightRed;
-}
-
-.contact-logo {
-    height: 2.5 * var.$lineHeight + rem;
-    display: flex;
-    line-height: 2 * var.$lineHeight + rem;
-    margin-bottom: 0.5 * $margin;
-}
-
-.contact-wrapper h1 {
-    font-size: 4 * var.$fontSize;
-    font-weight: 600;
-    color: var.$colorLightRed;
-    margin-bottom: 1.5 * $margin;
-    text-transform: uppercase;
-    letter-spacing: 2.5 * var.$letterSpacing;
-    padding-left: $padding;
-    padding-right: 0.5 * $padding;
+    padding: 0.5 * $padding 0;
 }
 
 .contact-form {
-    width: 50rem;
+    width: 70rem;
     display: flex;
     flex-direction: column;
+    gap: 25px;
 }
 
 .contact-form input,
 .contact-form textarea {
     padding: 1.2 * $padding;
-    background-color: var.$boxShadowColor-4;
-    color: var.$colorLightRed;
     margin-bottom: 0.5 $margin;
+    background-color: var.$boxShadowColor-2;
+    color: var.$colorLightRed;
     font-weight: 200;
     font-size: 1.8 * var.$fontSize;
     letter-spacing: 0.05 * var.$letterSpacing;
@@ -671,8 +663,8 @@ img {
 
 .contact-form textarea {
     max-width: 100%;
-    max-height: 15rem;
-    min-height: 5.5rem;
+    max-height: 7.5 * var.$lineHeight + em;
+    min-height: 4 * var.$lineHeight + em;
 }
 
 .contact-form .send-message {
@@ -680,13 +672,13 @@ img {
     font-weight: 400;
     font-size: 2 * var.$fontSize;
     color: var.$colorLightRed;
-    background-color: var.$colorMediumRed;
+    background-color: var.$colorDarkRed;
     transition: 2.5 * var.$transition;
     cursor: pointer;
 }
 
 .contact-form .send-message:hover {
-    background-color: var.$colorDarkRed;
+    background-color: var.$colorMediumRed;
     transform: scale(0.98);
 }
 
@@ -694,29 +686,14 @@ img {
 
 .footer {
     width: 100%;
-    height: 5 * var.$lineHeight;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: rgba(1, 1, 1, 0.904);
+    background-color: rgba(1, 1, 1, 0.9);
     box-shadow: 0 0 2rem 1rem var.$boxShadowColor-5;
-    padding: 0 10 * $padding;
+    padding: 1.6 * $padding;
 }
 
-.footer-nav a {
-    font-size: 2 * var.$fontSize;
-    font-weight: 500;
-    color: var.$colorLightRed;
-    text-shadow: 0 0 0.5rem var.$colorDarkRed;
-    margin-right: 1.5 * $margin;
-    letter-spacing: 0.1 * var.$letterSpacing;
-    text-transform: uppercase;
-    transition: 2.5 * var.$transition;
-}
-
-.footer-nav a:hover {
-    color: var.$colorMediumRed;
-}
 .copyright {
     width: $width;
     font-size: 1.5 * var.$fontSize;
