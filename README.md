@@ -4,6 +4,8 @@ Welcome to Business Agency Website! This is a web application for a business age
 
 The project is built using JavaScript, HTML, and CSS. The website is designed to showcase the agency's expertise and services, and to attract potential clients.
 
+The site is not responsive at the moment - <b>in progress...</b>
+
 ## Quick setup and start
 
 In order to run webpage you need HTTP sever which serve the site, for example [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer).
