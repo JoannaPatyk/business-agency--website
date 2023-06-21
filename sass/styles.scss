@@ -14,6 +14,7 @@
 html {
     font-size: var.$fontSize;
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 /* NAVBAR */
@@ -41,29 +42,32 @@ html {
 }
 
 .logo {
+    @include flex;
+    width: 100%;
     position: relative;
-    @include flex;
-}
+    padding-left: 2 * var.$margin;
 
-.logo-name {
-    font-weight: 600;
-    font-size: 4 * var.$fontSize;
-    letter-spacing: 0.2 * var.$letterSpacing;
-    text-transform: uppercase;
-    color: var.$colorLightRed;
-}
+    .logo-name {
+        font-weight: 700;
+        font-size: 4 * var.$fontSize;
+        letter-spacing: 0.4 * var.$letterSpacing;
+        text-transform: uppercase;
+        color: var.$colorLightRed;
+        transition: 3 * var.$transition;
 
-.logo-name span {
-    font-size: 7 * var.$fontSize;
-    font-weight: 800;
-    color: var.$colorMediumRed;
-}
+        span {
+            font-size: 6 * var.$fontSize;
+            font-weight: 900;
+        }
 
-.nav-links {
-    height: var.$height;
-    @include flex;
-    flex-direction: column;
-    justify-content: center;
+        &:hover {
+            color: var.$colorMediumRed;
+        }
+    }
+
+    .logo-img {
+        height: 5.5 * var.$lineHeight + rem;
+    }
 }
 
 .nav-list {
@@ -74,27 +78,33 @@ html {
     height: 100%;
     background-color: var.$black;
     transition: var.$transition;
+
+    .nav-links {
+        height: var.$height;
+        @include flex;
+        flex-direction: column;
+        justify-content: center;
+
+        .nav-link {
+            margin: 1.25 * var.$margin 0;
+            font-size: 7 * var.$fontSize;
+            font-weight: 700;
+            letter-spacing: 0.3 * var.$letterSpacing;
+            color: var.$colorLightRed;
+            text-transform: uppercase;
+            transition: var.$transition;
+
+            &:hover {
+                color: var.$colorMediumRed;
+            }
+        }
+    }
 }
 
 .change .nav-list {
     opacity: 1;
     visibility: visible;
     transition: all 0.7s 0.5s;
-}
-
-.nav-link {
-    margin: 1.25 * var.$margin 0;
-    font-size: 4.5 * var.$fontSize;
-    font-weight: 700;
-    letter-spacing: 0.3 * var.$letterSpacing;
-    color: var.$colorLightRed;
-    text-shadow: 0 0 0.5rem var.$colorDarkRed;
-    text-transform: uppercase;
-    transition: var.$transition;
-}
-
-.nav-link:hover {
-    color: var.$colorMediumRed;
 }
 
 .menu-container {
@@ -105,15 +115,20 @@ html {
     justify-content: center;
     justify-content: space-evenly;
     cursor: pointer;
-}
 
-.menu {
-    position: fixed;
-    top: 2.5rem;
-    right: 4rem;
-    z-index: 100;
-    font-size: 5 * var.$fontSize;
-    color: var.$colorMediumRed;
+    .menu {
+        position: fixed;
+        top: 2.5rem;
+        right: 4rem;
+        z-index: 100;
+        font-size: 5 * var.$fontSize;
+        color: var.$colorLightRed;
+        transition: var.$transition;
+
+        &:hover {
+            color: var.$colorMediumRed;
+        }
+    }
 }
 
 .back-icon {
@@ -146,19 +161,18 @@ html {
     width: 100%;
     height: 100%;
     z-index: -1;
-    overflow: hidden;
-}
 
-.video-container video {
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    opacity: 0.5;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    video {
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        opacity: 0.3;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
 }
 
 .banner {
@@ -175,21 +189,20 @@ html {
     height: 6 * var.$lineHeight + rem;
     perspective: 25 * var.$lineHeight + rem;
     overflow: hidden;
-}
 
-.banner-heading span {
-    position: absolute;
-    width: 100%;
-    @include flex;
-    justify-content: center;
-    font-size: 8 * var.$fontSize;
-    letter-spacing: 2 * var.$letterSpacing;
-    font-weight: 800;
-    text-transform: uppercase;
-    color: var.$black;
-    text-shadow: 0.1rem 0.1rem 0.5rem var.$silver;
-    transform: translateZ(8rem);
-    opacity: 0;
+    span {
+        position: absolute;
+        width: 100%;
+        @include flex;
+        justify-content: center;
+        font-size: 7 * var.$fontSize;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: 900;
+        text-transform: uppercase;
+        color: var.$colorMediumRed;
+        transform: translateZ(8rem);
+        opacity: 0;
+    }
 }
 
 .heading-1 {
@@ -209,14 +222,15 @@ html {
 }
 
 .banner-paragraph {
-    width: 50%;
+    width: 45%;
     margin: 0 auto 3 * var.$margin;
     padding: var.$padding;
     font-weight: 900;
-    font-size: 4 * var.$fontSize;
+    font-size: 4.5 * var.$fontSize;
     color: var.$black;
-    letter-spacing: 0.2 * var.$letterSpacing;
-    line-height: var.$lineHeight;
+    letter-spacing: 0.15 * var.$letterSpacing;
+    line-height: 0.8 * var.$lineHeight;
+    text-transform: uppercase;
     visibility: hidden;
     opacity: 0;
     animation: fadeAnimation 0.08 * var.$animationDuration 0.75 * var.$animationDelay forwards;
@@ -227,14 +241,33 @@ html {
     height: 4 * var.$lineHeight + rem;
     font-size: 3.5 * var.$fontSize;
     background: linear-gradient(to right, var.$colorMediumRed, var.$colorDarkRed);
+
+    &::before {
+        @include button-before;
+    }
+
+    &:hover::before {
+        left: 10 * var.$left;
+    }
 }
 
-.banner-btn::before {
-    @include button-before;
+.logo-img {
+    position: absolute;
+    bottom: -12%;
+    z-index: -1;
+    opacity: 0.3;
 }
 
-.banner-btn:hover::before {
-    left: 10 * var.$left;
+.left {
+    left: -15%;
+    height: 95%;
+    transform: rotate(95deg);
+}
+
+.right {
+    right: -35%;
+    height: 96%;
+    transform: rotate(35deg);
 }
 
 @keyframes animationHeading {
@@ -295,13 +328,14 @@ html {
     @include flex;
     justify-content: center;
     flex-direction: column;
-    font-size: 2.2 * var.$fontSize;
+    font-size: 2.7 * var.$fontSize;
     font-weight: 100;
     letter-spacing: 0.2 * var.$letterSpacing;
     color: var.$colorLightRed;
 
     h2,
     h3 {
+        z-index: 1;
         font-weight: 600;
         line-height: var.$lineHeight;
         margin-left: 3 * var.$margin;
@@ -311,19 +345,6 @@ html {
     h3 {
         text-align: center;
     }
-
-    img {
-        margin-top: -4 * var.$margin;
-
-        transform: rotate(20deg);
-    }
-}
-
-img {
-    position: absolute;
-    z-index: 0;
-    opacity: 0.3;
-    height: 0.7 * var.$height;
 }
 
 .section-2-description {
@@ -342,19 +363,23 @@ img {
     overflow: hidden;
 
     img {
+        position: absolute;
+        z-index: 0;
+        opacity: 0.3;
+        height: 0.7 * var.$height;
         bottom: -20%;
         z-index: 0;
         transform: rotate(180deg);
     }
-}
 
-.video {
-    width: 70%;
-    height: 40%;
-    z-index: 1;
-    object-fit: cover;
-    box-shadow: 0 0 2rem 2rem var.$boxShadowColor-3;
-    transition: 1.5 * var.$transition;
+    .video {
+        width: 70%;
+        height: 40%;
+        z-index: 1;
+        object-fit: cover;
+        box-shadow: 0 0 2rem 2rem var.$boxShadowColor-3;
+        transition: 1.5 * var.$transition;
+    }
 }
 
 .section-2-paragraph {
@@ -365,10 +390,9 @@ img {
     justify-content: center;
     text-align: center;
     padding: 2 * var.$padding;
-    font-size: 1.6 * var.$fontSize;
-    font-weight: 100;
-    letter-spacing: 0.1 * var.$letterSpacing;
-    line-height: var.$lineHeight;
+    font-size: 2.8 * var.$fontSize;
+    letter-spacing: 0.2 * var.$letterSpacing;
+    line-height: 0.8 * var.$lineHeight;
     color: var.$colorLightRed;
     text-shadow: 1rem 1rem 2rem var.$boxShadowColor-3;
 }
@@ -390,33 +414,40 @@ img {
     display: flex;
     justify-content: center;
     padding: 2 * var.$padding;
-}
 
-.pricing-card {
-    width: 40rem !important;
-    height: 65rem !important;
-    background-color: var.$black;
-    border-radius: var.$borderRadius;
-}
+    .pricing-card {
+        width: 40rem !important;
+        height: 65rem !important;
+        background-color: var.$black;
+        border-radius: var.$borderRadius;
 
-.pricing-card-front {
-    width: 100%;
-    height: 100%;
-    @include flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
+        .pricing-card-front {
+            width: 100%;
+            height: 100%;
+            @include flex;
+            flex-direction: column;
+            justify-content: space-between;
 
-.pricing-card-heading {
-    width: 100%;
-    height: 3 * var.$lineHeight + rem;
-    @include flex;
-    padding-left: 3 * var.$padding;
-    color: var.$colorLightRed;
-    font-size: 2 * var.$fontSize;
-    font-weight: 600;
-    letter-spacing: var.$letterSpacing;
-    text-transform: uppercase;
+            .pricing-card-heading {
+                width: 100%;
+                height: 3 * var.$lineHeight + rem;
+                @include flex;
+                padding-left: 3 * var.$padding;
+                color: var.$colorLightRed;
+                font-size: 4 * var.$fontSize;
+                font-weight: 600;
+                letter-spacing: var.$letterSpacing;
+                text-transform: uppercase;
+            }
+
+            .pricing-card-price {
+                font-size: 5 * var.$fontSize;
+                font-weight: 900;
+                color: var.$colorLightRed;
+                letter-spacing: 0.3 * var.$letterSpacing;
+            }
+        }
+    }
 }
 
 .heading-free,
@@ -442,16 +473,31 @@ img {
     background: var.$linear-gradient-red;
 }
 
-.pricing-card-price {
-    font-size: 4 * var.$fontSize;
-    font-weight: 900;
-    color: var.$colorLightRed;
-    letter-spacing: 0.3 * var.$letterSpacing;
-}
+.pricing-card-list {
+    text-align: center;
+    padding: var.$padding;
 
-.pricing-card-list li {
-    margin: 0.8 * var.$margin;
-    list-style: none;
+    li {
+        margin: 0.8 * var.$margin;
+        list-style: none;
+    }
+
+    i {
+        font-size: 1.8 * var.$fontSize;
+        width: 1.5 * var.$lineHeight + rem;
+    }
+
+    span {
+        font-weight: 500;
+        font-size: 1.5 * var.$fontSize;
+        letter-spacing: 0.1 * var.$letterSpacing;
+        line-height: 0.8 * var.$lineHeight;
+
+        strong {
+            font-weight: 900;
+            font-size: 1.6 * var.$fontSize;
+        }
+    }
 }
 
 .list-free li {
@@ -470,28 +516,6 @@ img {
     color: var.$red;
 }
 
-.pricing-card-list {
-    text-align: center;
-    padding: var.$padding;
-}
-
-.pricing-card-list i {
-    font-size: 1.8 * var.$fontSize;
-    width: 1.5 * var.$lineHeight + rem;
-}
-
-.pricing-card-list span {
-    font-weight: 500;
-    font-size: 1.4 * var.$fontSize;
-    letter-spacing: 0.1 * var.$letterSpacing;
-    line-height: 0.8 * var.$lineHeight;
-}
-
-.pricing-card-list strong {
-    font-weight: 900;
-    font-size: 1.6 * var.$fontSize;
-}
-
 .pricing-card-btn {
     @include button;
     height: 2 * var.$lineHeight + rem;
@@ -499,14 +523,14 @@ img {
     font-size: 2 * var.$fontSize;
     color: var.$black;
     margin-bottom: 1.5 * var.$margin;
-}
 
-.pricing-card-btn::before {
-    @include button-before;
-}
+    &::before {
+        @include button-before;
+    }
 
-.pricing-card-btn:hover::before {
-    left: 10 * var.$left;
+    &:hover::before {
+        left: 10 * var.$left;
+    }
 }
 
 .btn-free {
@@ -529,59 +553,58 @@ img {
 
 .section-4 {
     width: 100%;
-    height: 100vh;
+    height: 90vh;
     @include flex;
-    padding-left: 10 * var.$padding;
     padding-bottom: 2 * var.$padding;
     background-color: var.$black;
     box-shadow: 0 0 3rem 3rem var.$boxShadowColor-3;
 }
 
 .contact-wrapper {
-    width: 90%;
-    display: flex;
+    width: 100%;
+    @include flex;
     flex-direction: column;
-    align-items: center;
-}
+    justify-content: center;
 
-.contact-wrapper h1 {
-    font-size: 2 * var.$fontSize;
-    font-weight: 500;
-    color: var.$colorLightRed;
-    margin-bottom: 1.5 * var.$margin;
-    letter-spacing: 0.2 * var.$letterSpacing;
-}
+    .contact-details {
+        display: flex;
+        margin-bottom: 3 * var.$margin;
 
-.contact-details {
-    display: flex;
-    margin-bottom: 3 * var.$margin;
-}
+        div {
+            width: 18rem;
+            text-align: center;
+            margin: 2 * var.$margin;
+        }
 
-.contact-details div {
-    width: 18rem;
-    text-align: center;
-    margin: 2 * var.$margin;
-}
+        i {
+            font-size: 6 * var.$fontSize;
+            color: var.$colorMediumRed;
+        }
 
-.contact-details i {
-    font-size: 6 * var.$fontSize;
-    color: var.$colorMediumRed;
-}
+        h3 {
+            font-size: 3 * var.$fontSize;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: var.$colorLightRed;
+            letter-spacing: 0.5 * var.$letterSpacing;
+            margin: var.$margin 0;
+        }
 
-.contact-details h3 {
-    font-size: 3 * var.$fontSize;
-    font-weight: 600;
-    text-transform: uppercase;
-    color: var.$colorLightRed;
-    letter-spacing: 0.5 * var.$letterSpacing;
-    margin: var.$margin 0;
-}
+        p {
+            font-size: 2 * var.$fontSize;
+            font-weight: 400;
+            color: var.$colorLightRed;
+            padding: 0.5 * var.$padding 0;
+        }
+    }
 
-.contact-details p {
-    font-size: 2 * var.$fontSize;
-    font-weight: 400;
-    color: var.$colorLightRed;
-    padding: 0.5 * var.$padding 0;
+    h1 {
+        font-size: 4 * var.$fontSize;
+        font-weight: 500;
+        color: var.$colorLightRed;
+        margin-bottom: 1.5 * var.$margin;
+        letter-spacing: 0.2 * var.$letterSpacing;
+    }
 }
 
 .contact-form {
@@ -595,35 +618,34 @@ img {
         height: 2 * var.$lineHeight + rem;
         font-size: 2 * var.$fontSize;
         background: linear-gradient(to right, var.$colorMediumRed, var.$colorDarkRed);
+
+        &::before {
+            @include button-before;
+        }
+
+        &:hover::before {
+            left: 10 * var.$left;
+        }
     }
 
-    .send-message::before {
-        @include button-before;
+    input,
+    textarea {
+        width: 80rem;
+        padding: 1.2 * var.$padding;
+        margin-bottom: 0.5 var.$margin;
+        background-color: var.$boxShadowColor-2;
+        color: var.$colorLightRed;
+        font-weight: 200;
+        font-size: 1.8 * var.$fontSize;
+        letter-spacing: 0.05 * var.$letterSpacing;
+        border: none;
+        border-radius: var.$borderRadius;
     }
-
-    .send-message:hover::before {
-        left: 10 * var.$left;
+    textarea {
+        max-width: 100%;
+        max-height: 7.5 * var.$lineHeight + rem;
+        min-height: 4 * var.$lineHeight + rem;
     }
-}
-
-.contact-form input,
-.contact-form textarea {
-    width: 80rem;
-    padding: 1.2 * var.$padding;
-    margin-bottom: 0.5 var.$margin;
-    background-color: var.$boxShadowColor-2;
-    color: var.$colorLightRed;
-    font-weight: 200;
-    font-size: 1.8 * var.$fontSize;
-    letter-spacing: 0.05 * var.$letterSpacing;
-    border: none;
-    border-radius: var.$borderRadius;
-}
-
-.contact-form textarea {
-    max-width: 100%;
-    max-height: 7.5 * var.$lineHeight + rem;
-    min-height: 4 * var.$lineHeight + rem;
 }
 
 /* Footer */
@@ -634,260 +656,443 @@ img {
     justify-content: space-between;
     background-color: rgba(1, 1, 1, 0.9);
     box-shadow: 0 0 2rem 1rem var.$boxShadowColor-5;
-    padding: 1.6 * var.$padding;
+
+    .copyright {
+        width: var.$width;
+        font-size: 2 * var.$fontSize;
+        color: var.$colorLightRed;
+        font-weight: 100;
+        letter-spacing: 0.1 * var.$letterSpacing;
+        text-align: center;
+    }
 }
 
-.copyright {
-    width: var.$width;
-    font-size: 1.5 * var.$fontSize;
-    color: var.$colorLightRed;
-    font-weight: 100;
-    letter-spacing: 0.1 * var.$letterSpacing;
-    text-align: center;
-}
-
-/* *************************** */
+/* *********************************************** */
 
 @media (max-width: 1800px) {
     .video-wrapper {
-        width: 80rem;
-        height: 45rem;
-        right: 15rem;
-        top: 15rem;
+        width: 60%;
+        height: 90%;
     }
 
     .section-2-paragraph {
-        width: 90rem;
-        right: 15rem;
+        font-size: 2.5 * var.$fontSize;
     }
 }
 
 @media (max-width: 1650px) {
-    html {
-        font-size: 57%;
-    }
-
-    .logo-name {
-        left: 0.7 * var.$left;
-    }
-
-    .video-wrapper {
-        width: 70rem;
-        height: 40rem;
-        right: 5rem;
-        top: 10rem;
-    }
-
     .section-2-paragraph {
-        width: 90rem;
-        right: 20rem;
-        bottom: 10rem;
+        font-size: 2.2 * var.$fontSize;
     }
 }
 
 @media (max-width: 1500px) {
-    .logo-name {
-        left: var.$left;
-    }
-
-    .section-heading-line {
-        display: none;
-    }
-
     .video-wrapper {
-        width: 60rem;
-        right: 10rem;
+        width: 70%;
+        height: 90%;
+    }
+
+    .section-2-container {
+        font-size: 2.5 * var.$fontSize;
     }
 }
 
-@media (max-width: 1400px) {
-    html {
-        font-size: 45%;
-    }
-
+@media (max-width: 1410px) {
     .banner-heading span {
-        font-size: 10rem;
+        font-size: 6 * var.$fontSize;
     }
 
     .banner-paragraph {
-        width: 45rem;
-        font-size: 3rem;
-    }
-
-    .section-2,
-    .section-3,
-    .section-4 {
-        flex-direction: column;
-    }
-
-    .video-wrapper {
-        width: 80rem;
-        height: 45rem;
-        top: 20%;
-        left: 50%;
-        transform: translateX(-50%);
+        font-size: 4 * var.$fontSize;
     }
 
     .section-2-paragraph {
-        left: 50%;
-        transform: translateX(-50%);
-        bottom: 12rem;
-        font-size: 2.6rem;
-        font-weight: 100;
+        font-size: 2 * var.$fontSize;
     }
 
     .section-3 {
-        height: auto;
         padding: 5 * var.$padding 0 10 * var.$padding;
     }
-
-    .section-3 .section-heading {
-        margin-bottom: 3.5 * var.$margin;
-    }
-
-    .swiper-container {
-        width: 100%;
-    }
-
-    .section-4 {
-        height: auto;
-        padding: 5 * var.$padding 0;
-    }
 }
 
-@media (max-width: 900px) {
-    html {
-        font-size: 40%;
+@media (max-width: 1250px) {
+    .left {
+        height: 75%;
     }
 
-    .navbar {
-        padding: 0;
-        width: 100%;
-        height: 5 * var.$lineHeight;
-    }
-
-    .logo-name {
-        top: 3 * var.$top;
-        left: var.$left;
-        margin: var.$margin;
-        font-size: 4rem;
-    }
-
-    .logo-name span {
-        font-size: 5rem;
-    }
-
-    .banner {
-        top: 3 * var.$top;
-    }
-
-    .banner-heading {
-        height: 7.5 * var.$lineHeight;
+    .right {
+        height: 76%;
     }
 
     .banner-heading span {
-        font-size: 0.8 * var.$fontSize;
+        font-size: 5 * var.$fontSize;
     }
 
     .banner-paragraph {
-        width: 45rem;
-        font-size: 0.4 * var.$fontSize;
+        font-size: 3 * var.$fontSize;
     }
 
-    .banner-btn {
-        position: relative;
-        width: 30rem;
-        height: 5 * var.$lineHeight;
-        font-size: 0.3 * var.$fontSize;
-    }
-
-    .section-2,
-    .section-3,
-    .section-4 {
-        flex-direction: column;
-        box-shadow: none;
-    }
-
-    .section-2-paragraph {
-        bottom: 12rem;
-    }
-}
-
-@media (max-width: 800px) {
-    html {
-        font-size: 35%;
-    }
-
-    .contact-details div {
-        margin: 3rem 2rem;
-    }
-}
-
-@media (max-width: 700px) {
-    html {
-        font-size: 30%;
-    }
-
-    .menu {
-        right: 15%;
-    }
-
-    .section-1,
     .section-2 {
-        height: 0.8 * var.$height;
+        padding: 0 5 * var.$padding;
     }
 
-    .section-3 {
-        height: 0.7 * var.$height;
+    .section-2-container {
+        font-size: 2.2 * var.$fontSize;
     }
 
     .video-wrapper {
-        width: 70rem;
-        height: 40rem;
+        width: 90%;
+        height: 80%;
     }
 
-    .section-2-paragraph {
-        width: 80rem;
-    }
-
-    .footer {
-        flex-direction: column;
-        justify-content: center;
-    }
-
-    .footer-nav {
-        margin-bottom: var.$margin;
+    .section-2-description {
+        font-size: 2.1 * var.$fontSize;
     }
 }
 
-@media (max-width: 500px) {
-    html {
-        font-size: 26%;
+@media (max-width: 990px) {
+    .logo {
+        .logo-name {
+            font-size: 3 * var.$fontSize;
+        }
+
+        .logo-name span {
+            font-size: 5 * var.$fontSize;
+        }
+    }
+
+    .left {
+        height: 65%;
+    }
+
+    .right {
+        height: 60%;
     }
 
     .banner-heading span {
-        top: 20%;
-        font-size: 0.5 * var.$fontSize;
+        font-size: 4.5 * var.$fontSize;
+    }
+
+    .banner-paragraph {
+        font-size: 2.8 * var.$fontSize;
+    }
+
+    .section-2 {
+        height: 1.2 * var.$height;
+        flex-direction: column;
+    }
+
+    .section-2-container {
+        width: 80%;
     }
 
     .video-wrapper {
-        width: 60rem;
+        width: 80%;
+        height: 100%;
+        gap: 50px;
     }
 
-    .section-2-paragraph {
-        width: 60rem;
+    .pricing-cards-wrapper {
+        .pricing-card {
+            height: 60rem !important;
+        }
     }
 
-    .section-2-bg {
-        display: none;
-    }
+    .contact-wrapper {
+        h3 {
+            font-size: 2 * var.$fontSize;
+        }
 
-    .contact-details div {
-        width: 18rem;
-        margin: 1.5 * var.$padding var.$padding;
+        p {
+            font-size: 1.5 * var.$fontSize;
+        }
+
+        h1 {
+            font-size: 3.5 * var.$fontSize;
+        }
     }
 
     .contact-form {
-        width: 60rem;
+        input,
+        textarea {
+            width: 60rem;
+        }
+    }
+}
+
+@media (max-width: 840px) {
+    .left {
+        height: 55%;
+    }
+
+    .right {
+        height: 45%;
+    }
+
+    .section-2 {
+        padding: 0 2 * var.$padding;
+    }
+
+    .section-2-container {
+        font-size: 1.5 * var.$fontSize;
+
+        h2,
+        h3 {
+            margin-bottom: var.$margin;
+        }
+    }
+
+    .section-2-paragraph {
+        width: 90%;
+        font-size: 1.8 * var.$fontSize;
+    }
+
+    .contact-wrapper {
+        h3 {
+            font-size: 1.8 * var.$fontSize;
+        }
+
+        p {
+            font-size: 1.3 * var.$fontSize;
+        }
+
+        h1 {
+            font-size: 3.2 * var.$fontSize;
+        }
+    }
+
+    .contact-form {
+        input,
+        textarea {
+            width: 50rem;
+        }
+    }
+
+    .contact-wrapper {
+        .contact-details {
+            margin-bottom: 1.5 * var.$margin;
+
+            div {
+                margin: 0.5 * var.$margin;
+            }
+        }
+    }
+}
+
+@media (max-width: 695px) {
+    .left {
+        bottom: 10%;
+        height: 50%;
+    }
+
+    .right {
+        height: 40%;
+    }
+
+    .banner-paragraph {
+        width: 80%;
+        font-size: 2.2 * var.$fontSize;
+    }
+
+    .section-2 {
+        height: 1 * var.$height;
+        flex-direction: column;
+    }
+
+    .video-wrapper {
+        width: 100%;
+        gap: 25px;
+    }
+
+    .section-2-container {
+        width: 100%;
+    }
+
+    .contact-form {
+        input,
+        textarea {
+            width: 45rem;
+        }
+    }
+
+    .contact-wrapper {
+        .contact-details {
+            margin-left: var.$margin;
+            margin-right: var.$margin;
+            margin-bottom: 3 * var.$margin;
+
+            div {
+                margin: 0.25 * var.$margin;
+            }
+
+            i {
+                font-size: 4.5 * var.$fontSize;
+                color: var.$colorMediumRed;
+            }
+
+            h3 {
+                font-size: 2 * var.$fontSize;
+                margin: var.$margin 0;
+            }
+
+            p {
+                font-size: 1.8 * var.$fontSize;
+                padding: 0.15 * var.$padding 0;
+            }
+        }
+
+        h1 {
+            font-size: 2.5 * var.$fontSize;
+        }
+    }
+}
+
+@media (max-width: 575px) {
+    .banner-heading span {
+        margin: 0 var.$margin;
+        font-size: 4 * var.$fontSize;
+    }
+
+    .menu-container {
+        .menu {
+            top: 12rem;
+            right: 2rem;
+            font-size: 4 * var.$fontSize;
+            color: var.$colorMediumRed;
+        }
+    }
+
+    .logo {
+        padding-left: 0;
+        justify-content: center;
+
+        .logo-name {
+            padding-top: var.$padding;
+        }
+    }
+
+    .section-2 {
+        height: var.$height;
+    }
+
+    .section-2-container {
+        h2,
+        h3 {
+            font-size: 1.8 * var.$fontSize;
+            margin-left: 0;
+            margin-bottom: 0;
+        }
+
+        li {
+            font-size: 1.8 * var.$fontSize;
+        }
+    }
+
+    .video-wrapper {
+        width: 110%;
+        height: 110%;
+        gap: 25px;
+    }
+
+    .section-2-paragraph {
+        width: 95%;
+        font-size: 1.6 * var.$fontSize;
+    }
+
+    .contact-form {
+        input,
+        textarea {
+            width: 35rem;
+        }
+    }
+
+    .contact-wrapper {
+        width: 70%;
+        margin: 0 auto;
+        text-align: center;
+
+        .contact-details {
+            padding: 0 var.$padding;
+            margin-bottom: 2 * var.$margin;
+
+            div {
+                width: 14rem;
+            }
+        }
+
+        h1 {
+            width: 90%;
+        }
+
+        .send-message {
+            width: 40%;
+        }
+    }
+}
+
+@media (max-width: 475px) {
+    .left {
+        bottom: 30%;
+    }
+
+    .logo {
+        .logo-name {
+            font-size: 2.5 * var.$fontSize;
+        }
+
+        .logo-name span {
+            font-size: 4 * var.$fontSize;
+        }
+    }
+
+    .banner-heading span {
+        font-size: 3 * var.$fontSize;
+    }
+
+    .banner-btn {
+        width: 60%;
+    }
+
+    .section-4 {
+        height: 1.2 * var.$height;
+    }
+
+    .contact-wrapper {
+        .contact-details {
+            flex-direction: column;
+
+            div {
+                margin: 0.75 * var.$margin;
+            }
+        }
+    }
+}
+
+@media (max-width: 400px) {
+    .section-2-paragraph {
+        display: none;
+    }
+
+    .contact-form {
+        input,
+        textarea {
+            width: 30%;
+        }
+    }
+
+    .contact-wrapper {
+        .send-message {
+            width: 25%;
+        }
+
+        h1 {
+            font-size: 1.8 * var.$fontSize;
+        }
+    }
+
+    .footer {
+        .copyright {
+            font-size: 1.4 * var.$fontSize;
+        }
     }
 }
