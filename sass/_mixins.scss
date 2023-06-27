@@ -12,6 +12,7 @@
     text-shadow: 0.6rem 0.3rem 0.8rem var.$boxShadowColor-1;
     text-transform: uppercase;
     font-weight: 600;
+    font-family: var.$headingFontFamily;
     letter-spacing: 0.2 * var.$letterSpacing;
     color: var.$colorLightRed;
     cursor: pointer;

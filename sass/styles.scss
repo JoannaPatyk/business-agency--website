@@ -27,8 +27,6 @@ html {
     width: var.$width;
     height: 5 * var.$lineHeight + rem;
     padding: var.$padding;
-    display: grid;
-    grid-template-rows: 3fr 1fr 1fr;
     background-color: var.$black;
     box-shadow: 0 0 2rem 1rem var.$boxShadowColor-5;
     transition: 2.5 * var.$transition;
@@ -49,14 +47,14 @@ html {
 
     .logo-name {
         font-weight: 700;
-        font-size: 4 * var.$fontSize;
+        font-size: 5 * var.$fontSize;
         letter-spacing: 0.4 * var.$letterSpacing;
         text-transform: uppercase;
-        color: var.$colorLightRed;
+        color: var.$white;
         transition: 3 * var.$transition;
 
         span {
-            font-size: 6 * var.$fontSize;
+            font-size: 7 * var.$fontSize;
             font-weight: 900;
         }
 
@@ -195,8 +193,8 @@ html {
         width: 100%;
         @include flex;
         justify-content: center;
-        font-size: 7 * var.$fontSize;
-        font-family: Arial, Helvetica, sans-serif;
+        font-size: 9 * var.$fontSize;
+        font-family: var.$headingFontFamily;
         font-weight: 900;
         text-transform: uppercase;
         color: var.$colorMediumRed;
@@ -333,7 +331,11 @@ html {
     letter-spacing: 0.2 * var.$letterSpacing;
     color: var.$colorLightRed;
 
-    h2,
+    h1 {
+        font-family: var.$headingFontFamily;
+    }
+
+    h1,
     h3 {
         z-index: 1;
         font-weight: 600;
@@ -382,19 +384,31 @@ html {
     }
 }
 
-.section-2-paragraph {
+.numbers-container {
     width: 80%;
-    z-index: 1;
+    height: 20%;
     @include flex;
-    flex-direction: column;
     justify-content: center;
+    gap: 100px;
     text-align: center;
-    padding: 2 * var.$padding;
-    font-size: 2.8 * var.$fontSize;
-    letter-spacing: 0.2 * var.$letterSpacing;
-    line-height: 0.8 * var.$lineHeight;
-    color: var.$colorLightRed;
-    text-shadow: 1rem 1rem 2rem var.$boxShadowColor-3;
+
+    article {
+        width: 40%;
+        font-family: var.$headingFontFamily;
+        color: var.$colorLightRed;
+        text-transform: uppercase;
+        letter-spacing: 0.25 * var.$letterSpacing;
+
+        span {
+            font-family: inherit;
+            font-size: 8 * var.$fontSize;
+        }
+
+        p {
+            font-family: inherit;
+            font-size: 4 * var.$fontSize;
+        }
+    }
 }
 
 /* SECTION 3 */
@@ -402,8 +416,9 @@ html {
 .section-3 {
     width: 100%;
     height: var.$height;
-    @include flex;
-    padding-left: 2 * var.$padding;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
     background-image: var.$backgroundImageSection;
     background-repeat: no-repeat;
     background-size: cover;
@@ -412,8 +427,8 @@ html {
 .pricing-cards-wrapper {
     width: 100%;
     display: flex;
-    justify-content: center;
-    padding: 2 * var.$padding;
+    justify-content: start;
+    padding: var.$padding;
 
     .pricing-card {
         width: 40rem !important;
@@ -434,9 +449,10 @@ html {
                 @include flex;
                 padding-left: 3 * var.$padding;
                 color: var.$colorLightRed;
-                font-size: 4 * var.$fontSize;
-                font-weight: 600;
-                letter-spacing: var.$letterSpacing;
+                font-size: 5 * var.$fontSize;
+                font-family: var.$headingFontFamily;
+                font-weight: 900;
+                letter-spacing: 0.5 * var.$letterSpacing;
                 text-transform: uppercase;
             }
 
@@ -489,7 +505,7 @@ html {
 
     span {
         font-weight: 500;
-        font-size: 1.5 * var.$fontSize;
+        font-size: 1.8 * var.$fontSize;
         letter-spacing: 0.1 * var.$letterSpacing;
         line-height: 0.8 * var.$lineHeight;
 
@@ -520,8 +536,9 @@ html {
     @include button;
     height: 2 * var.$lineHeight + rem;
     width: 10 * var.$lineHeight + rem;
-    font-size: 2 * var.$fontSize;
-    color: var.$black;
+    font-size: 3 * var.$fontSize;
+    font-weight: 900;
+    color: var.$white;
     margin-bottom: 1.5 * var.$margin;
 
     &::before {

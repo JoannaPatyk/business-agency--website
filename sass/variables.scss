@@ -3,6 +3,7 @@ $colorMediumRed: #d40d12;
 $colorDarkRed: #7f080b;
 
 $black: #242727;
+$white: #ffffff;
 $silver: #c0c0c0;
 
 $blue: #31c2ee;
@@ -18,13 +19,14 @@ $boxShadowColor-5: rgba(0, 0, 0, 0.9);
 
 $linear-gradient-1: linear-gradient(to right, transparent, #f5f5f5, transparent);
 $linear-gradient-yellow: linear-gradient(to right, #7c580a, #eec281);
-$linear-gradient-green: linear-gradient(to right, #a3c50e, #e3eeb7);
+$linear-gradient-green: linear-gradient(to right, #56660d, #b6c96b);
 $linear-gradient-blue: linear-gradient(to right, #035a69, #31c2ee);
 $linear-gradient-red: linear-gradient(to right, #a10c14, #e56e71);
 
 $fontSize: 10px;
 $letterSpacing: 1rem;
 $fontFamily: 'Abel', sans-serif;
+$headingFontFamily: 'Cabin Sketch', sans-serif;
 
 $lineHeight: 2;
 $borderRadius: 1rem;
